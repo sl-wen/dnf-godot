@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="Texture2D" path="res://assets/images/map/obj/elvenltw.png" id="1"]
-
-[node name="elvenltw" type="Sprite2D"]
-texture = ExtResource("1")
