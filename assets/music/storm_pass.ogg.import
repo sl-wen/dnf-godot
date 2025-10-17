@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/storm_pass.ogg-ce4ba0de8bb59489fabb52926f10d765.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cskv2168426k1"
+path="res://.godot/imported/storm_pass.ogg-ce4ba0de8bb59489fabb52926f10d765.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/storm_pass.ogg"
-dest_files=[ "res://.import/storm_pass.ogg-ce4ba0de8bb59489fabb52926f10d765.oggstr" ]
+dest_files=["res://.godot/imported/storm_pass.ogg-ce4ba0de8bb59489fabb52926f10d765.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

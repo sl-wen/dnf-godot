@@ -20,8 +20,8 @@ func showHPLayer():
 	var currentHP = get_parent().currentHP;
 	var singleLayerHP = get_parent().singleLayerHP;
 	if currentHP == 0:
-		foreground_rect = Rect2(0,0,0,rect_size.y);
-		background_rect = Rect2(foreground_rect.size.x,0,rect_size.x - foreground_rect.size.x,rect_size.y);
+		foreground_rect = Rect2(0,0,0,size.y);
+		background_rect = Rect2(foreground_rect.size.x,0,size.x - foreground_rect.size.x,size.y);
 		owner.get_node("hp_layer_num").visible = false;
 	else:
 		#首先计算出当前血量是第几层血
@@ -40,7 +40,7 @@ func showHPLayer():
 			foregroundColorIndex = hpColors.size() - 1;
 		foreground_color = hpColors[foregroundColorIndex];
 		if layerNum  == 1:
-			background_color = Color.black;
+			background_color = Color.BLACK;
 		else:
 			var backgroundColorIndex:int = 0;
 			if foregroundColorIndex != 0:
@@ -53,9 +53,9 @@ func showHPLayer():
 		var length:float = 1.0 * (currentHP % singleLayerHP) / singleLayerHP;
 		if length == 0:
 			length = 1;
-		foreground_rect = Rect2(0,0,rect_size.x * length,rect_size.y);
-		background_rect = Rect2(foreground_rect.size.x,0,rect_size.x - foreground_rect.size.x,rect_size.y);
-	update();
+		foreground_rect = Rect2(0,0,size.x * length,size.y);
+		background_rect = Rect2(foreground_rect.size.x,0,size.x - foreground_rect.size.x,size.y);
+	queue_redraw();
 
 func _draw() -> void:
 	draw_rect(foreground_rect,foreground_color);

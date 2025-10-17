@@ -1,23 +1,23 @@
 extends Control
 
-onready var tab1:Button = $Tab_Button1;
-onready var tab2:Button = $Tab_Button2;
-onready var tab3:Button = $Tab_Button3;
-onready var tab4:Button = $Tab_Button4;
-onready var tab5:Button = $Tab_Button5;
-onready var grid1:GridContainer = $grid1;
-onready var grid2:GridContainer = $grid2;
-onready var grid3:GridContainer = $grid3;
-onready var grid4:GridContainer = $grid4;
-onready var grid5:GridContainer = $grid5;
+@onready var tab1:Button = $Tab_Button1;
+@onready var tab2:Button = $Tab_Button2;
+@onready var tab3:Button = $Tab_Button3;
+@onready var tab4:Button = $Tab_Button4;
+@onready var tab5:Button = $Tab_Button5;
+@onready var grid1:GridContainer = $grid1;
+@onready var grid2:GridContainer = $grid2;
+@onready var grid3:GridContainer = $grid3;
+@onready var grid4:GridContainer = $grid4;
+@onready var grid5:GridContainer = $grid5;
 #sp
-onready var sp:Label = $SP;
+@onready var sp:Label = $SP;
 
 
 var select_index:int = 0;
 
 func _ready() -> void:
-	tab1.pressed = true;
+	tab1.button_pressed = true;
 	init_data();
 
 #初始化数据
@@ -55,21 +55,21 @@ func _on_lockBtn_pressed():
 func _on_unclockBtn_pressed():
 	pass # Replace with function body.
 
-func can_drop_data(_position, data):
+func _can_drop_data(_position, data):
 	if data["origin_panel"] == "SkillShortcut":
 		var skill_class:int = ConfigManager.skillConfigProxy.get_class_by_ID(DataManager.roleData.job_base,data["origin_item_id"]["id"]);
 		if select_index != skill_class:
 			match skill_class:
 				0:
-					tab1.pressed = true;
+					tab1.button_pressed = true;
 				1:
-					tab2.pressed = true;
+					tab2.button_pressed = true;
 				2:
-					tab3.pressed = true;
+					tab3.button_pressed = true;
 				3:
-					tab4.pressed = true;
+					tab4.button_pressed = true;
 				4:
-					tab5.pressed = true;
+					tab5.button_pressed = true;
 	else:
 		return false;
 

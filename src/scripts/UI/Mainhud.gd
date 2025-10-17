@@ -1,15 +1,15 @@
 extends Control
 
-onready var expBar:TextureProgress = $expBar;
-onready var fatigueBar:TextureProgress = $fatigueBar;
-onready var hpBar:TextureProgress = $hpBar;
-onready var mpBar:TextureProgress = $mpBar;
-onready var SP:Label = $SP;
-onready var lv:Label = $lv;
+@onready var expBar:TextureProgressBar = $expBar;
+@onready var fatigueBar:TextureProgressBar = $fatigueBar;
+@onready var hpBar:TextureProgressBar = $hpBar;
+@onready var mpBar:TextureProgressBar = $mpBar;
+@onready var SP:Label = $SP;
+@onready var lv:Label = $lv;
 #道具栏快捷键
-onready var invShort:Control = $InvShortcut;
+@onready var invShort:Control = $InvShortcut;
 #技能栏快捷键
-onready var skillShort:Control = $SkillShortcutGrid;
+@onready var skillShort:Control = $SkillShortcutGrid;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +18,10 @@ func _ready():
 #初始化
 func init_data():
 	lv.text = str(DataManager.roleData.lv);
-	expBar.value = (DataManager.roleData.expe / DataManager.roleData.max_expe) * 100.0;
-	hpBar.value = (DataManager.roleData.hp / DataManager.roleData.max_hp) * 100.0;
-	mpBar.value = (DataManager.roleData.mp / DataManager.roleData.max_mp) * 100.0;
+	# 避免除零错误
+	expBar.value = (DataManager.roleData.expe / DataManager.roleData.max_expe) * 100.0 if DataManager.roleData.max_expe > 0 else 0.0;
+	hpBar.value = (DataManager.roleData.hp / DataManager.roleData.max_hp) * 100.0 if DataManager.roleData.max_hp > 0 else 0.0;
+	mpBar.value = (DataManager.roleData.mp / DataManager.roleData.max_mp) * 100.0 if DataManager.roleData.max_mp > 0 else 0.0;
 	SP.text = str(DataManager.roleData.sp);
 	
 	#初始化道具栏数据

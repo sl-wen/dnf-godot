@@ -4,10 +4,10 @@
 
 [node name="far" type="ParallaxLayer" parent="."]
 
-[node name="Sprite" type="Sprite" parent="far"]
+[node name="Sprite2D" type="Sprite2D" parent="far"]
 centered = false
 
 [node name="mid" type="ParallaxLayer" parent="."]
 
-[node name="Sprite" type="Sprite" parent="mid"]
+[node name="Sprite2D" type="Sprite2D" parent="mid"]
 centered = false

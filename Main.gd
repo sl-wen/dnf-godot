@@ -1,44 +1,44 @@
 extends Node2D
 class_name Main
 
-onready var levels:Node2D = $levels;
-onready var bgm:AudioStreamPlayer = $BGMPlayer;
-onready var env:AudioStreamPlayer = $ENVPlayer;
-onready var loading = $LoadingLayer/Loading;
-onready var ui:CanvasLayer = $UI;
+@onready var levels:Node2D = $levels;
+@onready var bgm:AudioStreamPlayer = $BGMPlayer;
+@onready var env:AudioStreamPlayer = $ENVPlayer;
+@onready var loading = $LoadingLayer/Loading;
+@onready var ui:CanvasLayer = $UI;
 #状态栏
-onready var status:Control = $UI/Status;
+@onready var status:Control = $UI/Status;
 #背包
-onready var bag:Control = $Main/Panel/Bag;
+@onready var bag:Control = $Main/Panel/Bag;
 #仓库
-onready var storate:Control = $Main/Panel/StorateUI;
+@onready var storate:Control = $Main/Panel/StorateUI;
 #HUD
-onready var hud:Control = $Main/Panel/Mainhud;
+@onready var hud:Control = $Main/Panel/Mainhud;
 #技能面板
-onready var skill:Control = $Main/Panel/Skillinventory;
+@onready var skill:Control = $Main/Panel/Skillinventory;
 #技能tooltip
-onready var toolTipSkill:Control = $ToolTip/ToolTipSkill;
+@onready var toolTipSkill:Control = $ToolTip/ToolTipSkill;
 #装备tooltip
-onready var toolTipEquip:Control = $ToolTip/ToolTipEquip;
+@onready var toolTipEquip:Control = $ToolTip/ToolTipEquip;
 #optionmenu
-onready var optionMenu:Popup = $Popup/OptionMenu;
+@onready var optionMenu:Popup = $Popup/OptionMenu;
 #myinfomenu
-onready var infoMenu:Popup =$Popup/MyinfoMenu;
+@onready var infoMenu:Popup =$Popup/MyinfoMenu;
 #血条容器
-onready var monsterHP:CanvasLayer = $MonsterHP;
+@onready var monsterHP:CanvasLayer = $MonsterHP;
 
 
 #玩家
-var player:KinematicBody2D;
+var player:CharacterBody2D;
 #当前地图
 var current_level;
 
 func _ready() -> void:
 	GlobalManager.main = self;
-	var _err = InputManager.connect("open_status",self,"_on_open_status");
-	_err = InputManager.connect("open_bag",self,"_on_open_bag");
-	_err = InputManager.connect("open_skill",self,"_on_open_skill");
-	_err = InputManager.connect("ui_cancel",self,"on_ui_cancel");
+	var _err = InputManager.connect("open_status", Callable(self, "_on_open_status"));
+	_err = InputManager.connect("open_bag", Callable(self, "_on_open_bag"));
+	_err = InputManager.connect("open_skill", Callable(self, "_on_open_skill"));
+	_err = InputManager.connect("ui_cancel", Callable(self, "on_ui_cancel"));
 	
 	init_player();
 	init_map();
@@ -47,15 +47,15 @@ func _ready() -> void:
 func init_player():
 	match DataManager.roleData.job:
 		GLOBALS_TYPE.SWORDMAN:
-			player = load("res://src/scenes/character/Swordman.tscn").instance();
+			player = load("res://src/scenes/character/Swordman.tscn").instantiate();
 		GLOBALS_TYPE.FIGHTER:
-			player = load("res://src/scenes/character/Fighter.tscn").instance();
+			player = load("res://src/scenes/character/Fighter.tscn").instantiate();
 
 #初始化地图
 func init_map():
 	GlobalManager.map_type = "town";
 	var elv = load("res://src/scenes/town/Elvengard/Elvengard.tscn");
-	current_level = elv.instance();
+	current_level = elv.instantiate();
 	levels.add_child(current_level);
 	current_level.setPlayer(player);
 
@@ -63,10 +63,10 @@ func init_map():
 func change_level():
 	player.get_parent().remove_child(player);
 	var children = levels.get_children()
-	if not children.empty():
+	if not children.is_empty():
 		children[0].queue_free();
 	
-	yield(get_tree(), "idle_frame")
+	await get_tree().idle_frame
 	
 	var file_addr:String;
 	match GlobalManager.state.target:
@@ -83,7 +83,7 @@ func change_level():
 	
 	GlobalManager.map_type = "town";
 	var level = load(file_addr);
-	current_level = level.instance();
+	current_level = level.instantiate();
 	levels.add_child(current_level);
 	current_level.setPlayer(player,false);
 	
@@ -96,7 +96,7 @@ func changeBGM(value:String):
 	bgm.stop();
 	var audio_file = "res://assets/music/" + value + ".ogg";
 	var bgmusic = load(audio_file);
-	bgmusic.set_loop(true); 
+	bgmusic.loop = true; 
 	bgm.stream = bgmusic;
 	bgm.play();
 	GlobalManager.current_bgm_name = value;
@@ -112,7 +112,7 @@ func changeENV(value:String):
 		return;
 	var audio_file = "res://assets/sounds/amb/" + value + ".ogg";
 	var envmusic = load(audio_file);
-	envmusic.set_loop(true);
+	envmusic.loop = true;
 	env.stream = envmusic;
 	env.play();
 	GlobalManager.current_env_name = value;
@@ -125,7 +125,7 @@ func get_level_type() -> String:
 func openWorldmap():
 	match GlobalManager.state.worldmap_name:
 		"Lorien":
-			var w = load("res://src/scenes/worldmap/Lorien.tscn").instance();
+			var w = load("res://src/scenes/worldmap/Lorien.tscn").instantiate();
 			ui.add_child(w);
 			
 	current_level.reset_player_position();
@@ -138,11 +138,11 @@ func enterDungeon1():
 func enterDungeon2():
 	player.get_parent().remove_child(player);
 	var children = levels.get_children();
-	if not children.empty():
+	if not children.is_empty():
 		children[0].queue_free();
 	
 	GlobalManager.map_type = "dungeon";
-	current_level = GlobalManager.select_dungeon_scene.instance()
+	current_level = GlobalManager.select_dungeon_scene.instantiate()
 	levels.add_child(current_level);
 	current_level.setPlayer(player);
 
@@ -202,7 +202,7 @@ func on_ui_cancel():
 func _on_open_window(w_name:String,path:String):
 	if _close_window(w_name) == true:
 		return;
-	var window:Control = load(path).instance();
+	var window:Control = load(path).instantiate();
 	ui.add_child(window);
 	
 #关闭窗口
@@ -215,4 +215,3 @@ func _close_window(ui_name:String) -> bool:
 			child.queue_free();
 			has = true;
 	return has;
-

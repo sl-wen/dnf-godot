@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var effect:AnimatedSprite = $Effect;
+@onready var effect:AnimatedSprite2D = $Effect;
 
 func _ready() -> void:
 	effect.play("default");

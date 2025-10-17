@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	var effect = HitEffect.instance();
+	var effect = HitEffect.instantiate();
 	var p = get_parent();
 	effect.position = Vector2(26,0);
 	p.add_child(effect);

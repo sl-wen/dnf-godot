@@ -82,7 +82,7 @@ func run_motion(_delta:float):
 	
 #移动
 func move():
-	velocity =	move_and_slide(velocity);
+	move_and_slide()
 	velocity = Vector2.ZERO;
 
 #普通攻击
@@ -104,7 +104,7 @@ func play_attack_sound():
 	if state != STATE.ATTACK:
 		return;
 	
-	var random:int = int(ceil(rand_range(0,3)));
+	var random:int = int(ceil(randf_range(0,3)));
 	match random:
 		1:
 			soundPlayer.stream = attack1_sound;
@@ -141,8 +141,7 @@ func change_state():
 func cast_skill(index:int):
 	var skl_data = DataManager.skillShortcutData.data[index];
 	if skl_data != null:
-			cast_skill(skl_data.id);
-			state = STATE.SKILL;
+		state = STATE.SKILL;
 	
 	match skl_data.id:
 		1003:

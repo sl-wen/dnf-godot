@@ -1,12 +1,12 @@
 extends "../motion.gd"
 
-export(float) var base_max_horizontal_speed = 400.0
+@export var base_max_horizontal_speed: float = 400.0
 
-export(float) var air_acceleration = 1000.0
-export(float) var air_deceleration = 2000.0
-export(float) var air_steering_power = 50.0
+@export var air_acceleration: float = 1000.0
+@export var air_deceleration: float = 2000.0
+@export var air_steering_power: float = 50.0
 
-export(float) var gravity = 1600.0
+@export var gravity: float = 1600.0
 
 var enter_velocity = Vector2()
 
@@ -54,7 +54,9 @@ func move_horizontally(delta, direction):
 	var steering_velocity = (target_velocity - horizontal_velocity).normalized() * air_steering_power
 	horizontal_velocity += steering_velocity
 
-	owner.move_and_slide(horizontal_velocity)
+	owner.velocity = horizontal_velocity
+	owner.move_and_slide()
+	owner.velocity
 
 
 func animate_jump_height(delta):

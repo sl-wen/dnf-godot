@@ -4,7 +4,7 @@ var attack2_sound = preload("res://assets/sounds/swordman/sm_atk_02.ogg");
 var attack3_sound = preload("res://assets/sounds/swordman/sm_atk_03.ogg");
 
 #普攻最大连击数
-export(int) var MAX_COMBO_COUNT = 3
+@export var MAX_COMBO_COUNT: int = 3
 #当前连击数
 var combo_count = 0;
 var combo:Array = ["attack1","attack2","attack3"];
@@ -27,6 +27,7 @@ func handle_input(event):
 	if can_combo == true and is_combo == true:
 		play_combo();
 		can_combo = false;
+	return super.handle_input(event)
 func _on_animation_finished(_anim_name):
 #	assert(anim_name == "damage1")
 	if is_combo == true:
@@ -45,7 +46,7 @@ func attack_sound():
 	var soundPlayer = owner.get_node("AudioStreamPlayer");
 	if soundPlayer.playing == true:
 		soundPlayer.stop();
-	var random:int = int(ceil(rand_range(0,3)));
+	var random:int = int(ceil(randf_range(0,3)));
 	match random:
 		1:
 			soundPlayer.stream = attack1_sound;

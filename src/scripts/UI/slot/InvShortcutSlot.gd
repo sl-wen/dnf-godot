@@ -1,9 +1,9 @@
 extends TextureRect
 
-onready var icon:TextureRect = $Icon;
-onready var select:TextureRect = $select;
+@onready var icon:TextureRect = $Icon;
+@onready var select:TextureRect = $select;
 
-func get_drag_data(_pos):
+func _get_drag_data(_pos):
 	if DataManager.invShortcutData.data[get_index()]:
 #	if not PlayerData.inv_data[get_parent().get_index()].empty():
 		var data = {};
@@ -17,16 +17,16 @@ func get_drag_data(_pos):
 		var drag_texture = TextureRect.new()
 		drag_texture.expand = true
 		drag_texture.texture = icon.texture
-		drag_texture.rect_size = Vector2(28,28)
+		drag_texture.size = Vector2(28,28)
 		
 		var control = Control.new()
 		control.add_child(drag_texture)
-		drag_texture.rect_position = -0.5 * drag_texture.rect_size
+		drag_texture.position = -0.5 * drag_texture.size
 		set_drag_preview(control)
 		
 		return data
 	
-func can_drop_data(_pos, data):
+func _can_drop_data(_pos, data):
 	if data["origin_panel"] == "SkillShortcut" or data["origin_panel"] == "SkillInventory":
 			return false
 	
@@ -49,7 +49,7 @@ func can_drop_data(_pos, data):
 		else:
 			return true
 	
-func drop_data(_pos, data):
+func _drop_data(_pos, data):
 	#我们在此插槽中放置物品时会发生什么
 #	var target_inv_slot = name;
 	var origin_slot = data["origin_node"].get_parent().name;

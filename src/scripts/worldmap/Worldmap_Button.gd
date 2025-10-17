@@ -3,17 +3,17 @@ extends Control
 const min_hard:int = 0;
 const max_hard:int = 3;
 
-export(PackedScene) var dungeon:Resource;
+@export var dungeon: PackedScene;
 
-onready var normalbg = $normalbg;
-onready var normalbtn = $normalBtn;
-onready var selectbg = $selectbg;
-onready var selectBtn = $selectBtn;
-onready var maoxian = $maoxian;
-onready var yongshi = $yongshi;
-onready var king = $king;
-onready var leftbtn = $leftBtn;
-onready var rightbtn = $rightBtn;
+@onready var normalbg = $normalbg;
+@onready var normalbtn = $normalBtn;
+@onready var selectbg = $selectbg;
+@onready var selectBtn = $selectBtn;
+@onready var maoxian = $maoxian;
+@onready var yongshi = $yongshi;
+@onready var king = $king;
+@onready var leftbtn = $leftBtn;
+@onready var rightbtn = $rightBtn;
 var index:int = 0;
 
 func _ready():
@@ -29,7 +29,7 @@ func _on_normalBtn_pressed():
 	index = 0;
 	GlobalManager.select_dungeon = name;
 	GlobalManager.select_dungeon_scene = dungeon;
-	GlobalManager.change_dungeon();
+	GlobalManager.trigger_change_dungeon();
 
 #鼠标移入
 func _on_normalBtn_mouse_entered():

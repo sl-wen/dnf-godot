@@ -1,6 +1,6 @@
 extends "res://src/scripts/town/LevelBase.gd"
 
-onready var gate = get_node("Gate");
+@onready var gate = get_node("Gate");
 
 
 func _ready() -> void:

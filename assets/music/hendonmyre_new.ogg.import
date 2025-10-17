@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/hendonmyre_new.ogg-c22996587d5f924113781853d1ab176a.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dl0o4x3um3g3j"
+path="res://.godot/imported/hendonmyre_new.ogg-c22996587d5f924113781853d1ab176a.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/hendonmyre_new.ogg"
-dest_files=[ "res://.import/hendonmyre_new.ogg-c22996587d5f924113781853d1ab176a.oggstr" ]
+dest_files=["res://.godot/imported/hendonmyre_new.ogg-c22996587d5f924113781853d1ab176a.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,6 @@
 extends "res://src/scripts/npc/NPC.gd"
 
-onready var menu:Popup = $Menu_Albert;
+@onready var menu:Popup = $Menu_Albert;
 
 func _ready():
 	amb_count = 5;

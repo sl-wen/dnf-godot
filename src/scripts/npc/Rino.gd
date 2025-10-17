@@ -1,7 +1,7 @@
 extends "res://src/scripts/npc/NPC.gd"
 
-onready var menu:Popup = $Menu_Type2;
-onready var taskBtn:TextureButton = $Menu_Type2/MarginContainer/VBoxContainer/taskBtn;
+@onready var menu:Popup = $Menu_Type2;
+@onready var taskBtn:TextureButton = $Menu_Type2/MarginContainer/VBoxContainer/taskBtn;
 
 func _ready():
 	amb_count = 3;

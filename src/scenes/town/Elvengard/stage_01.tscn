@@ -1,92 +1,85 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=31 format=3 uid="uid://stage01_elvengard"]
 
-[ext_resource path="res://assets/images/map/bg/01mid1.png" type="Texture" id=1]
-[ext_resource path="res://src/scenes/com/DoorArea.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/images/map/obj/blacksmith02.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/map/bg/01far1.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/map/tiles/01tile03.png" type="Texture" id=5]
-[ext_resource path="res://src/scripts/town/BaseStage.gd" type="Script" id=6]
-[ext_resource path="res://assets/images/map/obj/blacksmith01.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/map/tiles/elvengardobject05.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/map/sign/sign0.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/map/obj/blacksmith00.png" type="Texture" id=10]
-[ext_resource path="res://src/component/obj/blacksmith.tscn" type="PackedScene" id=11]
-[ext_resource path="res://src/component/obj/elvenltw.tscn" type="PackedScene" id=12]
-[ext_resource path="res://src/component/flag/flag0.tscn" type="PackedScene" id=13]
-[ext_resource path="res://src/component/obj/egseriahouse.tscn" type="PackedScene" id=14]
-[ext_resource path="res://src/scenes/npc/Linus.tscn" type="PackedScene" id=15]
-[ext_resource path="res://src/component/obj/01obj102.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/component/path/elvenpath2.tscn" type="PackedScene" id=17]
-[ext_resource path="res://src/component/obj/elvenrdg.tscn" type="PackedScene" id=18]
-[ext_resource path="res://src/scenes/npc/Danjin.tscn" type="PackedScene" id=19]
-[ext_resource path="res://src/scenes/monster/goblin/Goblin.tscn" type="PackedScene" id=20]
+[ext_resource type="Texture2D" path="res://assets/images/map/bg/01mid1.png" id="1"]
+[ext_resource type="PackedScene" path="res://src/scenes/com/DoorArea.tscn" id="2"]
+[ext_resource type="Texture2D" path="res://assets/images/map/obj/blacksmith02.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/images/map/bg/01far1.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/images/map/tiles/01tile03.png" id="5"]
+[ext_resource type="Script" path="res://src/scripts/town/BaseStage.gd" id="6"]
+[ext_resource type="Texture2D" path="res://assets/images/map/obj/blacksmith01.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/images/map/tiles/elvengardobject05.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/images/map/sign/sign0.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/images/map/obj/blacksmith00.png" id="10"]
+[ext_resource type="PackedScene" path="res://src/component/obj/blacksmith.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://src/component/obj/elvenltw.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://src/component/flag/flag0.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://src/component/obj/egseriahouse.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://src/scenes/npc/Linus.tscn" id="15"]
+[ext_resource type="PackedScene" path="res://src/component/obj/01obj102.tscn" id="16"]
+[ext_resource type="PackedScene" path="res://src/component/path/elvenpath2.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://src/component/obj/elvenrdg.tscn" id="18"]
+[ext_resource type="PackedScene" path="res://src/scenes/npc/Danjin.tscn" id="19"]
+[ext_resource type="PackedScene" path="res://src/scenes/monster/goblin/Goblin.tscn" id="20"]
 
-[sub_resource type="TileSet" id=1]
-0/name = "01tile03.png 0"
-0/texture = ExtResource( 5 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 224, 235 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1"]
+texture = ExtResource("5")
+texture_region_size = Vector2i(224, 224)
+0:0/0 = 0
 
-[sub_resource type="TileSet" id=2]
-0/name = "elvengardobject05.png 0"
-0/texture = ExtResource( 8 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 224, 81 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
+[sub_resource type="TileSet" id="TileSet_1"]
+tile_size = Vector2i(224, 224)
+sources/0 = SubResource("TileSetAtlasSource_1")
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 7 ), ExtResource( 3 ) ],
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2"]
+texture = ExtResource("8")
+texture_region_size = Vector2i(224, 81)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2"]
+tile_size = Vector2i(224, 81)
+sources/0 = SubResource("TileSetAtlasSource_2")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 38, 11 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(76, 22)
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 7, 40 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(14, 80)
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 7, 39 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3"]
+size = Vector2(14, 78)
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 83, 11 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4"]
+size = Vector2(166, 22)
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 789.46, 21.569 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5"]
+size = Vector2(1578.92, 43.138)
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 18.8326, 141.432 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6"]
+size = Vector2(37.6652, 282.864)
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 18.8326, 84.7472 )
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7"]
+size = Vector2(37.6652, 169.494)
 
 [node name="Elvengard_map1" type="Node2D"]
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 377.519, 340.199 ]
-}
+script = ExtResource("6")
+metadata/_edit_horizontal_guides_ = [377.519, 340.199]
 bgm = "forest_town"
 env = "amb_forest_01"
 
@@ -95,177 +88,165 @@ env = "amb_forest_01"
 [node name="background" type="ParallaxBackground" parent="environment"]
 
 [node name="far" type="ParallaxLayer" parent="environment/background"]
-motion_scale = Vector2( 0.7, 1 )
-motion_mirroring = Vector2( 640, 0 )
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(640, 0)
 
-[node name="Sprite" type="Sprite" parent="environment/background/far"]
-texture = ExtResource( 4 )
+[node name="Sprite2D" type="Sprite2D" parent="environment/background/far"]
+texture = ExtResource("4")
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 925, 375 )
+region_rect = Rect2(0, 0, 925, 375)
 
 [node name="mid" type="ParallaxLayer" parent="environment/background"]
-motion_scale = Vector2( 0.9, 1 )
-motion_mirroring = Vector2( 640, 0 )
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(640, 0)
 
-[node name="Sprite" type="Sprite" parent="environment/background/mid"]
-texture = ExtResource( 1 )
+[node name="Sprite2D" type="Sprite2D" parent="environment/background/mid"]
+texture = ExtResource("1")
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 931, 379 )
+region_rect = Rect2(0, 0, 931, 379)
 
 [node name="GrassMap" type="TileMap" parent="environment"]
-position = Vector2( 0, 101 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 224, 224 )
-format = 1
-tile_data = PoolIntArray( 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0 )
+position = Vector2(0, 101)
+tile_set = SubResource("TileSet_1")
+layer_0/tile_data = PackedInt32Array(65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0)
 
 [node name="RoadMap" type="TileMap" parent="environment"]
-position = Vector2( 0, -7 )
-tile_set = SubResource( 2 )
-cell_size = Vector2( 224, 81 )
-format = 1
-tile_data = PoolIntArray( 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0 )
+position = Vector2(0, -7)
+tile_set = SubResource("TileSet_2")
+layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0)
 
-[node name="blacksmith" parent="environment" instance=ExtResource( 11 )]
-position = Vector2( 377.881, 309.362 )
-frames = SubResource( 3 )
+[node name="blacksmith" parent="environment" instance=ExtResource("11")]
+position = Vector2(377.881, 309.362)
+sprite_frames = SubResource("SpriteFrames_1")
 frame = 2
 
-[node name="elvenltw" parent="environment" instance=ExtResource( 12 )]
-position = Vector2( 86.1251, 281.352 )
+[node name="elvenltw" parent="environment" instance=ExtResource("12")]
+position = Vector2(86.1251, 281.352)
 
-[node name="flag0" parent="environment" instance=ExtResource( 13 )]
-position = Vector2( 495.045, 279.134 )
+[node name="flag0" parent="environment" instance=ExtResource("13")]
+position = Vector2(495.045, 279.134)
 
-[node name="egseriahouse" parent="environment" instance=ExtResource( 14 )]
-position = Vector2( 783, 190 )
+[node name="egseriahouse" parent="environment" instance=ExtResource("14")]
+position = Vector2(783, 190)
 
-[node name="sign0" type="Sprite" parent="environment"]
-position = Vector2( 1070.8, 267.514 )
-texture = ExtResource( 9 )
+[node name="sign0" type="Sprite2D" parent="environment"]
+position = Vector2(1070.8, 267.514)
+texture = ExtResource("9")
 
-[node name="01obj102" parent="environment" instance=ExtResource( 16 )]
-position = Vector2( 1216, 179 )
+[node name="01obj102" parent="environment" instance=ExtResource("16")]
+position = Vector2(1216, 179)
 
-[node name="elvenrdg" parent="environment" instance=ExtResource( 18 )]
-position = Vector2( 1479.18, 264.349 )
+[node name="elvenrdg" parent="environment" instance=ExtResource("18")]
+position = Vector2(1479.18, 264.349)
 
 [node name="doors" type="Node2D" parent="."]
 
-[node name="to_Gate" parent="doors" instance=ExtResource( 2 )]
-position = Vector2( 782, 339 )
+[node name="to_Gate" parent="doors" instance=ExtResource("2")]
+position = Vector2(782, 339)
 current = "stage_01"
 target = "Gate"
 
 [node name="CollisionShape2D" parent="doors/to_Gate" index="0"]
-shape = SubResource( 4 )
+shape = SubResource("RectangleShape2D_1")
 
 [node name="pos" parent="doors/to_Gate" index="1"]
-position = Vector2( -2.5697, 30.144 )
+position = Vector2(-2.5697, 30.144)
 
-[node name="to_HendonMyre" parent="doors" instance=ExtResource( 2 )]
-position = Vector2( 7, 435 )
+[node name="to_HendonMyre" parent="doors" instance=ExtResource("2")]
+position = Vector2(7, 435)
 current = "Elvengard"
 target = "HendonMyre"
 stage = "stage_02"
 type = 1
 
 [node name="CollisionShape2D" parent="doors/to_HendonMyre" index="0"]
-shape = SubResource( 5 )
+shape = SubResource("RectangleShape2D_2")
 
 [node name="pos" parent="doors/to_HendonMyre" index="1"]
-position = Vector2( 82.6499, -0.891907 )
+position = Vector2(82.6499, -0.891907)
 
-[node name="to_stage_02" parent="doors" instance=ExtResource( 2 )]
-position = Vector2( 1561, 438 )
+[node name="to_stage_02" parent="doors" instance=ExtResource("2")]
+position = Vector2(1561, 438)
 current = "stage_01"
 target = "stage_02"
 
 [node name="CollisionShape2D" parent="doors/to_stage_02" index="0"]
-shape = SubResource( 6 )
+shape = SubResource("RectangleShape2D_3")
 
 [node name="pos" parent="doors/to_stage_02" index="1"]
-position = Vector2( -45.9619, 0 )
+position = Vector2(-45.9619, 0)
 
-[node name="to_Alfhlyra" parent="doors" instance=ExtResource( 2 )]
-position = Vector2( 1090, 549 )
+[node name="to_Alfhlyra" parent="doors" instance=ExtResource("2")]
+position = Vector2(1090, 549)
 current = "Elvengard"
 target = "Alfhlyra"
 stage = "stage_04"
 type = 1
 
 [node name="CollisionShape2D" parent="doors/to_Alfhlyra" index="0"]
-shape = SubResource( 7 )
+shape = SubResource("RectangleShape2D_4")
 
 [node name="pos" parent="doors/to_Alfhlyra" index="1"]
-position = Vector2( 0.5, -47.5 )
+position = Vector2(0.5, -47.5)
 
-[node name="Linus" parent="." instance=ExtResource( 15 )]
-margin_left = 450.714
-margin_top = 308.136
-margin_right = 515.714
-margin_bottom = 325.136
+[node name="Linus" parent="." instance=ExtResource("15")]
+offset_left = 450.714
+offset_top = 308.136
+offset_right = 515.714
+offset_bottom = 325.136
 
-[node name="Danjin" parent="." instance=ExtResource( 19 )]
-margin_left = 1354.73
-margin_top = 325.689
-margin_right = 1419.73
-margin_bottom = 342.689
+[node name="Danjin" parent="." instance=ExtResource("19")]
+offset_left = 1354.73
+offset_top = 325.689
+offset_right = 1419.73
+offset_bottom = 342.689
 
-[node name="stage" type="YSort" parent="."]
+[node name="stage" type="Node2D" parent="."]
 
-[node name="Goblin" parent="stage" instance=ExtResource( 20 )]
-position = Vector2( 611.149, 447.647 )
+[node name="Goblin" parent="stage" instance=ExtResource("20")]
+position = Vector2(611.149, 447.647)
 
-[node name="elvenpath2" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1089.92, 499.589 )
+[node name="elvenpath2" parent="." instance=ExtResource("17")]
+position = Vector2(1089.92, 499.589)
 
-[node name="TopLeft" type="Position2D" parent="."]
+[node name="TopLeft" type="Marker2D" parent="."]
 
-[node name="BottomRight" type="Position2D" parent="."]
-position = Vector2( 1568, 600 )
+[node name="BottomRight" type="Marker2D" parent="."]
+position = Vector2(1568, 600)
 
 [node name="collision" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="collision"]
-position = Vector2( 789.419, 323.612 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2(789.419, 323.612)
+metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collision/StaticBody2D"]
-polygon = PoolVector2Array( -790.562, 53.7334, -70.7271, 53.7334, -44.5641, 16.2567, 43.1172, 16.2567, 63.6233, 54.4405, 779.215, 53.7334, 778.149, -323.461, -790.916, -323.461 )
+polygon = PackedFloat32Array(-790.562, 53.7334, -70.7271, 53.7334, -44.5641, 16.2567, 43.1172, 16.2567, 63.6233, 54.4405, 779.215, 53.7334, 778.149, -323.461, -790.916, -323.461)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="collision"]
-position = Vector2( 788.419, 572.418 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2(788.419, 572.418)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision/StaticBody2D2"]
-shape = SubResource( 8 )
+shape = SubResource("RectangleShape2D_5")
 
 [node name="left" type="StaticBody2D" parent="collision"]
-position = Vector2( -18.8881, 448.278 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2(-18.8881, 448.278)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision/left"]
-position = Vector2( -1, 0 )
-shape = SubResource( 9 )
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_6")
 
 [node name="right" type="StaticBody2D" parent="collision"]
-position = Vector2( 1587.09, 464.021 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2(1587.09, 464.021)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision/right"]
-position = Vector2( -1, 0 )
-shape = SubResource( 10 )
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_7")
 
 [editable path="doors/to_Gate"]
 [editable path="doors/to_HendonMyre"]

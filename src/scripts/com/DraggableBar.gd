@@ -9,9 +9,9 @@ func _ready():
 	
 func _input(event:InputEvent):
 	if parent && drag:
-		parent.rect_global_position = event.global_position - offset;
+		parent.global_position = event.global_position - offset;
 	
 func _gui_input(event:InputEvent):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		drag = event.pressed;
-		offset = event.global_position - parent.rect_global_position;
+		offset = event.global_position - parent.global_position;

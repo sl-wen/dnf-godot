@@ -1,7 +1,7 @@
 extends "res://src/scripts/npc/NPC.gd"
 
-onready var menu:Popup = $Menu_Rothon;
-onready var taskBtn:TextureButton = $Menu_Rothon/MarginContainer/VBoxContainer/talkBtn;
+@onready var menu:Popup = $Menu_Rothon;
+@onready var taskBtn:TextureButton = $Menu_Rothon/MarginContainer/VBoxContainer/talkBtn;
 
 func _ready():
 	fw_count = 3;

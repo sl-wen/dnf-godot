@@ -1,6 +1,6 @@
 extends "res://src/scripts/npc/NPC.gd"
 
-onready var menu:Popup = $Menu_Birken;
+@onready var menu:Popup = $Menu_Birken;
 
 func _ready():
 	fw_count = 5;

@@ -4,14 +4,14 @@ const swordman_position:Vector2 = Vector2(52,96);
 const fighter_position:Vector2 = Vector2(62,153);
 
 
-onready var focus:TextureRect = $focus;
-onready var select:TextureRect  = $select;
-onready var nameLabel:Label = $nameLabel;
-onready var jobLabel:Label = $jobLabel;
-onready var bottom:AnimatedSprite = $bottom;
+@onready var focus:TextureRect = $focus;
+@onready var select:TextureRect  = $select;
+@onready var nameLabel:Label = $nameLabel;
+@onready var jobLabel:Label = $jobLabel;
+@onready var bottom:AnimatedSprite2D = $bottom;
 
 var data = null;
-var character:Sprite;
+var character:Sprite2D;
 
 func _ready():
 	focus.visible = false;
@@ -33,10 +33,10 @@ func _on_acter_mouse_exited():
 func create_role():
 	match data["role"]["job"]:
 		GLOBALS_TYPE.SWORDMAN:
-			character = load("res://src/scenes/character/Swordman_show.tscn").instance();
+			character = load("res://src/scenes/character/Swordman_show.tscn").instantiate();
 			character.position = swordman_position;
 		GLOBALS_TYPE.FIGHTER:
-			character = load("res://src/scenes/character/Fighter_show.tscn").instance();
+			character = load("res://src/scenes/character/Fighter_show.tscn").instantiate();
 			character.position = fighter_position;
 	add_child(character);
 	

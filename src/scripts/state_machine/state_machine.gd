@@ -10,18 +10,20 @@ signal state_changed(current_state)
 # You should set a starting node from the inspector or on the node that inherits
 # from this state machine interface. If you don't, the game will default to
 # the first state in the state machine's children.
-export(NodePath) var start_state
+@export var start_state: NodePath
 var states_map = {}
 
 var states_stack = []
 var current_state = null
-var _active = false setget set_active
+var _active = false: set = set_active
 
 func _ready():
 	if not start_state:
 		start_state = get_child(0).get_path()
+	# 初始化状态映射
 	for child in get_children():
-		var err = child.connect("finished", self, "_change_state")
+		states_map[child.name] = child
+		var err = child.connect("finished", Callable(self, "_change_state"))
 		if err:
 			printerr(err)
 	initialize(start_state)
@@ -44,31 +46,41 @@ func set_active(value):
 
 
 func _unhandled_input(event):
-	current_state.handle_input(event)
+	if current_state:
+		current_state.handle_input(event)
 
 
 func _physics_process(delta):
-	current_state.update(delta)
+	if current_state:
+		current_state.update(delta)
 
 
 func _on_animation_finished(anim_name):
 	if not _active:
 		return
-	current_state._on_animation_finished(anim_name)
+	if current_state:
+		current_state._on_animation_finished(anim_name)
 
 
 func _change_state(state_name):
 	if not _active:
 		return
-	current_state.exit()
+	if current_state:
+		current_state.exit()
 
 	if state_name == "previous":
 		states_stack.pop_front()
 	else:
-		states_stack[0] = states_map[state_name]
+		if states_stack.size() > 0:
+			states_stack[0] = states_map[state_name]
+		else:
+			states_stack.push_front(states_map[state_name])
 
-	current_state = states_stack[0]
-	emit_signal("state_changed", current_state)
+	if states_stack.size() > 0:
+		current_state = states_stack[0]
+		emit_signal("state_changed", current_state)
 
-	if state_name != "previous":
-		current_state.enter()
+		if state_name != "previous":
+			current_state.enter()
+	else:
+		current_state = null

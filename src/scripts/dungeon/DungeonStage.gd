@@ -1,22 +1,22 @@
 extends Node2D
 
-export(String) var bgm:String = "";
-export(String) var env:String = "";
-export(String) var stageType:String = "normal";
+@export var bgm: String = "";
+@export var env: String = "";
+@export var stageType: String = "normal";
 
-onready var bg:ParallaxBackground = $environment/background;
-onready var doors:Node2D = $doors;
-onready var topLeft:Position2D = $TopLeft;
-onready var bottomRight:Position2D = $BottomRight;
-onready var stage:YSort = $stage;
-var player:KinematicBody2D;
+@onready var bg:ParallaxBackground = $environment/background;
+@onready var doors:Node2D = $doors;
+@onready var topLeft:Marker2D = $TopLeft;
+@onready var bottomRight:Marker2D = $BottomRight;
+@onready var stage:Node2D = $stage;
+var player:CharacterBody2D;
 
 func _ready():
 	bg.transform.origin = global_position;
 	
 
 #添加玩家
-func addPlayer(p:KinematicBody2D,p_pos:Vector2,_isBorn:bool = false):
+func addPlayer(p:CharacterBody2D,p_pos:Vector2,_isBorn:bool = false):
 	player = p;
 	if _isBorn:
 		player.position = $Born.position;

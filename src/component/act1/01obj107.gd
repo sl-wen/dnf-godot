@@ -1,10 +1,10 @@
 extends StaticBody2D
 
-onready var pic:Sprite = $pic;
+@onready var pic:Sprite2D = $pic;
 
 func _ready():
-	$Area2D.connect("body_entered",self,"_on_Area2D_body_entered");
-	$Area2D.connect("body_exited",self,"_on_Area2D_body_exited");
+	$Area2D.connect("body_entered", Callable(self, "_on_Area2D_body_entered"));
+	$Area2D.connect("body_exited", Callable(self, "_on_Area2D_body_exited"));
 
 
 func _on_Area2D_body_entered(body):

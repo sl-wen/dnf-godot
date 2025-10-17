@@ -1,22 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource path="res://src/scripts/UI/slot/InvShortcutSlot.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/ui/windowcommon/Grid_Select.png" type="Texture" id=3]
+[ext_resource type="Script" path="res://src/scripts/UI/slot/InvShortcutSlot.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/windowcommon/Grid_Select.png" id="3"]
 
 [node name="InvShortcutSlot" type="TextureRect"]
-margin_right = 35.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 35, 35 )
+offset_right = 35.0
+offset_bottom = 35.0
+custom_minimum_size = Vector2( 35, 35 )
 expand = true
-script = ExtResource( 2 )
+script = ExtResource("2")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Icon" type="TextureRect" parent="."]
-margin_right = 34.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 35, 35 )
+offset_right = 34.0
+offset_bottom = 34.0
+custom_minimum_size = Vector2( 35, 35 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,10 +24,10 @@ __meta__ = {
 
 [node name="select" type="TextureRect" parent="."]
 visible = false
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 35, 35 )
-texture = ExtResource( 3 )
+offset_right = 30.0
+offset_bottom = 30.0
+custom_minimum_size = Vector2( 35, 35 )
+texture = ExtResource("3")
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

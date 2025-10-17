@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/sr_tk_02.ogg-af40402182395adc8986adf900714042.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bit6ak3ss5s8i"
+path="res://.godot/imported/sr_tk_02.ogg-af40402182395adc8986adf900714042.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/sharan/sr_tk_02.ogg"
-dest_files=[ "res://.import/sr_tk_02.ogg-af40402182395adc8986adf900714042.oggstr" ]
+dest_files=["res://.godot/imported/sr_tk_02.ogg-af40402182395adc8986adf900714042.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

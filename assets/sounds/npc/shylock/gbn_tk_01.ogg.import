@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/gbn_tk_01.ogg-abf0b306d52f57270baff461e8b0fce6.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cy8g0k1rcmywi"
+path="res://.godot/imported/gbn_tk_01.ogg-abf0b306d52f57270baff461e8b0fce6.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/shylock/gbn_tk_01.ogg"
-dest_files=[ "res://.import/gbn_tk_01.ogg-abf0b306d52f57270baff461e8b0fce6.oggstr" ]
+dest_files=["res://.godot/imported/gbn_tk_01.ogg-abf0b306d52f57270baff461e8b0fce6.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -7,8 +7,8 @@ var offset_pos:Vector2 = Vector2.ZERO;
 
 func init_data():
 	var mouse_pos:Vector2 = get_global_mouse_position();
-	var pos:Vector2 = Vector2(Utils.less_check(mouse_pos.x - rect_size.x - offset_pos.x,0),Utils.less_check(mouse_pos.y - rect_size.y - offset_pos.y,0));
-	rect_position = pos;
+	var pos:Vector2 = Vector2(Utils.less_check(mouse_pos.x - size.x - offset_pos.x,0),Utils.less_check(mouse_pos.y - size.y - offset_pos.y,0));
+	position = pos;
 	
 #	var item_id:int;
 #	if origin == "Inventory":

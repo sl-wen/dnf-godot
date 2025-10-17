@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/kiri_fw_02.ogg-2b435a20b2881ec83ecbe447db7d48a3.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bs5g7vni543a6"
+path="res://.godot/imported/kiri_fw_02.ogg-2b435a20b2881ec83ecbe447db7d48a3.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/kiri/kiri_fw_02.ogg"
-dest_files=[ "res://.import/kiri_fw_02.ogg-2b435a20b2881ec83ecbe447db7d48a3.oggstr" ]
+dest_files=["res://.godot/imported/kiri_fw_02.ogg-2b435a20b2881ec83ecbe447db7d48a3.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

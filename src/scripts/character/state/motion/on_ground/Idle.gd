@@ -6,7 +6,7 @@ func enter():
 
 
 func handle_input(event):
-	return .handle_input(event)
+	return super.handle_input(event)
 
 
 func update(_delta):

@@ -1,11 +1,11 @@
 extends "res://src/scripts/state_machine/state_machine.gd"
 
-onready var idle = $Idle
-onready var move = $Move
-onready var jump = $Jump
-onready var damage = $Damage
-onready var attack = $Attack
-onready var down = $Down
+@onready var idle = $Idle
+@onready var move = $Move
+@onready var jump = $Jump
+@onready var damage = $Damage
+@onready var attack = $Attack
+@onready var down = $Down
 
 func _ready():
 	pass

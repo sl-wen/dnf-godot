@@ -6,6 +6,8 @@ class_name RoleData
 #MP变更
 #signal mp_change;
 
+#角色名称（避免与 Node.name 冲突）
+var role_name:String = "";
 #职业基础名字
 var job_base:String = "";
 #当前职业名字
@@ -25,7 +27,7 @@ var sp:int = 0;
 #HP最大值
 var max_hp:int = 0;
 #
-var hp:int = 0 setget set_hp;
+var hp:int = 0: set = set_hp
 #MP最大值
 var max_mp:int = 0;
 #

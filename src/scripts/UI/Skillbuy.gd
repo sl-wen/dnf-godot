@@ -3,21 +3,21 @@ extends Panel
 var item_temp = preload("res://src/scenes/UI/slot/Skillbuy_Item.tscn");
 var group = preload("res://src/scenes/UI/btn_group/skillbuy_buttongroup.tres");
 
-onready var tab1:Button = $Tab_Button1;
-onready var tab2:Button = $Tab_Button2;
-onready var tab3:Button = $Tab_Button3;
-onready var tab4:Button = $Tab_Button4;
-onready var tab5:Button = $Tab_Button5;
-onready var grid1:GridContainer = $skillContainer/grid1;
-onready var grid2:GridContainer = $skillContainer/grid2;
-onready var grid3:GridContainer = $skillContainer/grid3;
-onready var grid4:GridContainer = $skillContainer/grid4;
-onready var grid5:GridContainer = $skillContainer/grid5;
-onready var skillContainer:ScrollContainer = $skillContainer;
+@onready var tab1:Button = $Tab_Button1;
+@onready var tab2:Button = $Tab_Button2;
+@onready var tab3:Button = $Tab_Button3;
+@onready var tab4:Button = $Tab_Button4;
+@onready var tab5:Button = $Tab_Button5;
+@onready var grid1:GridContainer = $skillContainer/grid1;
+@onready var grid2:GridContainer = $skillContainer/grid2;
+@onready var grid3:GridContainer = $skillContainer/grid3;
+@onready var grid4:GridContainer = $skillContainer/grid4;
+@onready var grid5:GridContainer = $skillContainer/grid5;
+@onready var skillContainer:ScrollContainer = $skillContainer;
 #学习技能按钮
-onready var learnBtn:Button = $learnBtn;
+@onready var learnBtn:Button = $learnBtn;
 #音效播放器
-onready var animation:AnimationPlayer = $AnimationPlayer;
+@onready var animation:AnimationPlayer = $AnimationPlayer;
 
 var select_index:int = 0;
 var select_item_index:int = 0;
@@ -25,7 +25,7 @@ var select_item_index:int = 0;
 var select_item_id = -1;
 
 func _ready():
-	tab1.pressed = true;
+	tab1.button_pressed = true;
 	learnBtn.disabled = true;
 	init_data();
 	$windowSound.play();
@@ -38,7 +38,7 @@ func init_data():
 		var skl_lv:int = DataManager.get_skill_lv(skl.ID);
 		var max_lv:int = Utils.get_skill_maxlv(skl.growtype_maximum_level);
 		if skl_lv < max_lv:
-			var item:TextureButton = item_temp.instance();
+			var item:TextureButton = item_temp.instantiate();
 			item.lv = skl_lv + 1;
 			item.skl = skl;
 			item.group = group;
@@ -53,7 +53,7 @@ func init_data():
 					grid = grid4;
 				4:
 					grid = grid5;
-			item.connect("toggled",self,"on_item_select",[grid.get_child_count(),skl.ID]);
+			item.connect("toggled", Callable(self, "on_item_select").bind(grid.get_child_count(),skl.ID));
 			grid.add_child(item);
 	
 #选择技能
@@ -186,7 +186,7 @@ func refresh_list():
 	var count:int = grid.get_child_count();
 	for i in range(0,count):
 		var item:TextureButton = grid.get_child(0);
-		item.disconnect("toggled",self,"on_item_select");
+		item.disconnect("toggled", Callable(self, "on_item_select"));
 		grid.remove_child(item);
 	
 	#正在学的技能是否被清理掉了
@@ -196,11 +196,11 @@ func refresh_list():
 		var skl_lv:int = DataManager.get_skill_lv(skl.ID);
 		var max_lv:int = Utils.get_skill_maxlv(skl.growtype_maximum_level);
 		if skl.skill_class == select_index and skl_lv < max_lv:
-			var item:TextureButton = item_temp.instance();
+			var item:TextureButton = item_temp.instantiate();
 			item.lv = skl_lv + 1;
 			item.skl = skl;
 			item.group = group;
-			item.connect("toggled",self,"on_item_select",[grid.get_child_count(),skl.ID]);
+			item.connect("toggled", Callable(self, "on_item_select").bind(grid.get_child_count(),skl.ID));
 			grid.add_child(item);
 			item.select.visible = false;
 			if skl.ID == select_item_id:

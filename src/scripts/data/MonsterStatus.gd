@@ -80,5 +80,6 @@ func init_data():
 	var temp1:Array = config.item.split("#");
 	for t in temp1:
 		var temp2:Array = t.split(":");
-		items[temp2[0]] = temp2[1];
+		if temp2.size() >= 2:
+			items[temp2[0]] = temp2[1];
 	

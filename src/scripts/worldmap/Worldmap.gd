@@ -1,11 +1,11 @@
 extends Control
 
-onready var buttons:Control = $buttons;
-onready var openhell:TextureButton = $openHellBtn;
-onready var closehell:TextureButton = $closeHellBtn;
+@onready var buttons:Control = $buttons;
+@onready var openhell:TextureButton = $openHellBtn;
+@onready var closehell:TextureButton = $closeHellBtn;
 
 func _ready():
-	GlobalManager.connect("change_dungeon",self,"change_dungeon");
+	GlobalManager.connect("change_dungeon", Callable(self, "on_change_dungeon"));
 	initselect();
 	closehell.visible = false;
 
@@ -36,7 +36,7 @@ func initselect():
 		if i == 0:
 			children[i]._on_normalBtn_pressed();
 
-func change_dungeon():
+func on_change_dungeon():
 	var children = buttons.get_children();
 	for btn in children:
 		if not btn.name == GlobalManager.select_dungeon:

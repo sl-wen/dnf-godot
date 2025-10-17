@@ -1,15 +1,15 @@
 extends Control
 
-onready var equipBtn:Button = $equipBtn;
-onready var stackableBtn:Button = $stackableBtn;
-onready var materialBtn:Button = $materialBtn;
-onready var exBtn:Button = $exBtn;
-onready var questBtn:Button = $questBtn;
-onready var equip_grid:GridContainer = $EquipGrid;
-onready var stackable_grid:GridContainer = $Stackable;
-onready var materials_grid:GridContainer = $Materials;
-onready var experjob_grid:GridContainer = $Experjob;
-onready var quest_grid:GridContainer = $Quest;
+@onready var equipBtn:Button = $equipBtn;
+@onready var stackableBtn:Button = $stackableBtn;
+@onready var materialBtn:Button = $materialBtn;
+@onready var exBtn:Button = $exBtn;
+@onready var questBtn:Button = $questBtn;
+@onready var equip_grid:GridContainer = $EquipGrid;
+@onready var stackable_grid:GridContainer = $Stackable;
+@onready var materials_grid:GridContainer = $Materials;
+@onready var experjob_grid:GridContainer = $Experjob;
+@onready var quest_grid:GridContainer = $Quest;
 ##槽位-肩膀
 #onready var shoulder:TextureRect = $leftEquip/Shoulder;
 ##槽位-上衣
@@ -31,14 +31,14 @@ onready var quest_grid:GridContainer = $Quest;
 ##槽位-称号
 #onready var Title:TextureRect = $rightEquip/Title;
 
-onready var leftEquip:Control = $leftEquip;
-onready var rightEquip:Control = $rightEquip;
+@onready var leftEquip:Control = $leftEquip;
+@onready var rightEquip:Control = $rightEquip;
 
 
 var select_index:int = 0;
 
 func _ready():
-	equipBtn.pressed = true;
+	equipBtn.button_pressed = true;
 	init_inv_data();
 	init_equip_data();
 	
@@ -86,22 +86,22 @@ func init_equip_data():
 			slot.get_node("Icon").texture = null;
 	
 
-func can_drop_data(_pos, data):
+func _can_drop_data(_pos, data):
 	if data["origin_panel"] != "SkillShortcut" or data["origin_panel"] != "SkillInventory":
 		var id:int = data["origin_item_id"]["id"];
 		var item_type:int = ConfigManager.equipConfigProxy.get_item_type(id); 
 		if select_index != item_type:
 			match item_type:
 				0:
-					equipBtn.pressed = true;
+					equipBtn.button_pressed = true;
 				1:
-					stackableBtn.pressed = true;
+					stackableBtn.button_pressed = true;
 				2:
-					material.pressed = true;
+					material.button_pressed = true;
 				3:
-					exBtn.pressed = true;
+					exBtn.button_pressed = true;
 				4:
-					questBtn.pressed = true;
+					questBtn.button_pressed = true;
 	else:
 		return false;
 
@@ -150,15 +150,15 @@ func show_grid(v1:bool,v2:bool,v3:bool,v4:bool,v5:bool):
 func change_type(item_type:int):
 	match item_type:
 		0:
-			equipBtn.pressed = true;
+			equipBtn.button_pressed = true;
 		1:
-			stackableBtn.pressed = true;
+			stackableBtn.button_pressed = true;
 		2:
-			material.pressed = true;
+			material.button_pressed = true;
 		3:
-			exBtn.pressed = true;
+			exBtn.button_pressed = true;
 		4:
-			questBtn.pressed = true;
+			questBtn.button_pressed = true;
 
 
 func _on_Bag_visibility_changed():

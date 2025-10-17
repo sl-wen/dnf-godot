@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource path="res://assets/fonts/DroidSansChinese.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://src/scripts/npc/NPC.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/ui/commandshow.wav" type="AudioStream" id=3]
+[ext_resource type="FontFile" path="res://assets/fonts/DroidSansChinese.ttf" id="1"]
+[ext_resource type="Script" path="res://src/scripts/npc/NPC.gd" id="2"]
+[ext_resource type="AudioStream" path="res://assets/sounds/ui/commandshow.wav" id="3"]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -32,40 +32,40 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/outline_color = Color( 0.654902, 0.964706, 0.192157, 1 )
-shader_param/show_outline = false
+shader = SubResource("1")
+shader_parameter/outline_color = Color( 0.654902, 0.964706, 0.192157, 1 )
+shader_parameter/show_outline = false
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 outline_size = 1
-font_data = ExtResource( 1 )
+font_data = ExtResource("1")
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 300, 300 )
 
 [node name="NPC" type="Control"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 302.088 ]
 }
 
-[node name="body_shadow" type="AnimatedSprite" parent="."]
+[node name="body_shadow" type="AnimatedSprite2D" parent="."]
 position = Vector2( -25.3907, 46.7723 )
 
-[node name="body" type="AnimatedSprite" parent="."]
-material = SubResource( 2 )
+[node name="body" type="AnimatedSprite2D" parent="."]
+material = SubResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="nameLabel" type="Label" parent="."]
-margin_left = -47.6179
-margin_top = -87.0
-margin_right = 48.3821
-margin_bottom = -70.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.839216, 0.784314, 0.639216, 1 )
-custom_colors/font_outline_modulate = Color( 0.2, 0.2, 0.2, 1 )
+offset_left = -47.6179
+offset_top = -87.0
+offset_right = 48.3821
+offset_bottom = -70.0
+theme_override_fonts/font = SubResource("3")
+theme_override_colors/font_color = Color( 0.839216, 0.784314, 0.639216, 1 )
+theme_override_colors/font_outline_color = Color( 0.2, 0.2, 0.2, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -73,10 +73,10 @@ __meta__ = {
 }
 
 [node name="mouse_check" type="TextureButton" parent="."]
-margin_left = -44.545
-margin_top = -57.9085
-margin_right = 45.455
-margin_bottom = 72.0915
+offset_left = -44.545
+offset_top = -57.9085
+offset_right = 45.455
+offset_bottom = 72.0915
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -89,7 +89,7 @@ area_mask = 2
 [node name="range_check" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range_check"]
-shape = SubResource( 4 )
+shape = SubResource("4")
 
 [node name="talkPlayer" type="AnimationPlayer" parent="."]
 
@@ -98,7 +98,7 @@ wait_time = 60.0
 one_shot = true
 
 [node name="clickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource("3")
 
 [connection signal="mouse_entered" from="mouse_check" to="." method="_on_mouse_check_mouse_entered"]
 [connection signal="mouse_exited" from="mouse_check" to="." method="_on_mouse_check_mouse_exited"]

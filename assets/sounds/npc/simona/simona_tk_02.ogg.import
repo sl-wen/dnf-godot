@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/simona_tk_02.ogg-40d7f8fb846e94084f36c0b568b4f486.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsvghm5c5ifgw"
+path="res://.godot/imported/simona_tk_02.ogg-40d7f8fb846e94084f36c0b568b4f486.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/simona/simona_tk_02.ogg"
-dest_files=[ "res://.import/simona_tk_02.ogg-40d7f8fb846e94084f36c0b568b4f486.oggstr" ]
+dest_files=["res://.godot/imported/simona_tk_02.ogg-40d7f8fb846e94084f36c0b568b4f486.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

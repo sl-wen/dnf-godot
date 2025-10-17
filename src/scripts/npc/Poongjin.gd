@@ -1,8 +1,8 @@
 extends "res://src/scripts/npc/NPC.gd"
 
-onready var menu:Popup = $Menu_Type3;
-onready var skillBtn:TextureButton = $Menu_Type3/MarginContainer/VBoxContainer/skillBtn;
-onready var taskBtn:TextureButton = $Menu_Type3/MarginContainer/VBoxContainer/taskBtn;
+@onready var menu:Popup = $Menu_Type3;
+@onready var skillBtn:TextureButton = $Menu_Type3/MarginContainer/VBoxContainer/skillBtn;
+@onready var taskBtn:TextureButton = $Menu_Type3/MarginContainer/VBoxContainer/taskBtn;
 
 func _ready():
 	amb_count = 1;

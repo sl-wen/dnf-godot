@@ -16,4 +16,3 @@ func get_exp(lv:int) -> int:
 			expe = temp["expe"];
 			break;
 	return expe;
-

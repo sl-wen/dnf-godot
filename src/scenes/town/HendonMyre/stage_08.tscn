@@ -1,19 +1,19 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=15 format=3]
 
-[ext_resource path="res://assets/images/map/hendonMyre/hmbshouse06.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/map/hendonMyre/hmbshouse05.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/map/tiles/hmbstile.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/map/tiles/hmbstilefloor_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/map/hendonMyre/hmbshouse04.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/map/tiles/hmbstilefloor_0.png" type="Texture" id=7]
-[ext_resource path="res://src/scripts/com/DoorArea.gd" type="Script" id=8]
-[ext_resource path="res://assets/images/map/bg/hmbsmid00.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/map/bg/hmbsfar00.png" type="Texture" id=10]
-[ext_resource path="res://src/scripts/town/BaseStage.gd" type="Script" id=11]
+[ext_resource type="Texture2D" path="res://assets/images/map/hendonMyre/hmbshouse06.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/images/map/hendonMyre/hmbshouse05.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/images/map/tiles/hmbstile.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/images/map/tiles/hmbstilefloor_1.png" id="5"]
+[ext_resource type="Texture2D" path="res://assets/images/map/hendonMyre/hmbshouse04.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/images/map/tiles/hmbstilefloor_0.png" id="7"]
+[ext_resource type="Script" path="res://src/scripts/com/DoorArea.gd" id="8"]
+[ext_resource type="Texture2D" path="res://assets/images/map/bg/hmbsmid00.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/images/map/bg/hmbsfar00.png" id="10"]
+[ext_resource type="Script" path="res://src/scripts/town/BaseStage.gd" id="11"]
 
 [sub_resource type="TileSet" id=1]
 0/name = "hmbstile.png 0"
-0/texture = ExtResource( 3 )
+0/texture = ExtResource("3")
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 224, 254 )
@@ -37,7 +37,7 @@ extents = Vector2( 448, 49 )
 extents = Vector2( 23.193, 117.161 )
 
 [node name="stage_08" type="Node2D"]
-script = ExtResource( 11 )
+script = ExtResource("11")
 __meta__ = {
 "_edit_vertical_guides_": [ 1118.65 ]
 }
@@ -51,8 +51,8 @@ env = "amb_town_03"
 [node name="far" type="ParallaxLayer" parent="environment/background"]
 motion_scale = Vector2( 0.7, 1 )
 
-[node name="Sprite" type="Sprite" parent="environment/background/far"]
-texture = ExtResource( 10 )
+[node name="Sprite2D" type="Sprite2D" parent="environment/background/far"]
+texture = ExtResource("10")
 centered = false
 offset = Vector2( -150, -20 )
 region_enabled = true
@@ -61,8 +61,8 @@ region_rect = Rect2( 0, 0, 1150, 243 )
 [node name="mid" type="ParallaxLayer" parent="environment/background"]
 motion_scale = Vector2( 0.9, 1 )
 
-[node name="Sprite" type="Sprite" parent="environment/background/mid"]
-texture = ExtResource( 9 )
+[node name="Sprite2D" type="Sprite2D" parent="environment/background/mid"]
+texture = ExtResource("9")
 centered = false
 offset = Vector2( 0, 80 )
 region_enabled = true
@@ -70,54 +70,53 @@ region_rect = Rect2( 0, 0, 1255, 259 )
 
 [node name="hmbstile" type="TileMap" parent="environment"]
 position = Vector2( 0, 356 )
-tile_set = SubResource( 1 )
-cell_size = Vector2( 224, 254 )
-format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0 )
+tile_set = SubResource("1")
+
+layer_0/tile_data = PackedInt32Array( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="hmbstilefloor_1" type="Sprite" parent="environment"]
+[node name="hmbstilefloor_1" type="Sprite2D" parent="environment"]
 position = Vector2( 841.634, 489.241 )
-texture = ExtResource( 5 )
+texture = ExtResource("5")
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="hmbstilefloor_2" type="Sprite" parent="environment"]
+[node name="hmbstilefloor_2" type="Sprite2D" parent="environment"]
 position = Vector2( 213.89, 510.329 )
-texture = ExtResource( 5 )
+texture = ExtResource("5")
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="hmbstilefloor_0" type="Sprite" parent="environment"]
+[node name="hmbstilefloor_0" type="Sprite2D" parent="environment"]
 position = Vector2( 403.912, 526.329 )
-texture = ExtResource( 7 )
+texture = ExtResource("7")
 
-[node name="hmbshouse04" type="Sprite" parent="environment"]
+[node name="hmbshouse04" type="Sprite2D" parent="environment"]
 position = Vector2( 171, 275 )
-texture = ExtResource( 6 )
+texture = ExtResource("6")
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="hmbshouse05" type="Sprite" parent="environment"]
+[node name="hmbshouse05" type="Sprite2D" parent="environment"]
 position = Vector2( 484, 241 )
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="hmbshouse06" type="Sprite" parent="environment"]
+[node name="hmbshouse06" type="Sprite2D" parent="environment"]
 position = Vector2( 761, 265 )
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="stage" type="YSort" parent="."]
+[node name="stage" type="Node2D" parent="."]
 
 [node name="doors" type="Node2D" parent="."]
 
@@ -126,7 +125,7 @@ modulate = Color( 0.4, 0.00392157, 0.498039, 1 )
 position = Vector2( 7.21724, 494.027 )
 collision_layer = 0
 collision_mask = 2
-script = ExtResource( 8 )
+script = ExtResource("8")
 __meta__ = {
 "_edit_group_": true
 }
@@ -134,9 +133,9 @@ current = "stage_08"
 type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="doors/to_Entrance"]
-shape = SubResource( 2 )
+shape = SubResource("2")
 
-[node name="pos" type="Position2D" parent="doors/to_Entrance"]
+[node name="pos" type="Marker2D" parent="doors/to_Entrance"]
 position = Vector2( 93.3529, 0 )
 
 [node name="to_stage_04" type="Area2D" parent="doors"]
@@ -144,7 +143,7 @@ modulate = Color( 0.4, 0.00392157, 0.498039, 1 )
 position = Vector2( 889.609, 494.027 )
 collision_layer = 0
 collision_mask = 2
-script = ExtResource( 8 )
+script = ExtResource("8")
 __meta__ = {
 "_edit_group_": true
 }
@@ -152,14 +151,14 @@ current = "stage_08"
 target = "stage_04"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="doors/to_stage_04"]
-shape = SubResource( 2 )
+shape = SubResource("2")
 
-[node name="pos" type="Position2D" parent="doors/to_stage_04"]
+[node name="pos" type="Marker2D" parent="doors/to_stage_04"]
 position = Vector2( -89.7854, 0 )
 
-[node name="TopLeft" type="Position2D" parent="."]
+[node name="TopLeft" type="Marker2D" parent="."]
 
-[node name="BottomRight" type="Position2D" parent="."]
+[node name="BottomRight" type="Marker2D" parent="."]
 position = Vector2( 896, 600 )
 
 [node name="collision" type="Node2D" parent="."]
@@ -174,7 +173,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision/StaticBody2D"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="collision"]
 position = Vector2( 448, 639 )
@@ -183,7 +182,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision/StaticBody2D2"]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="collision"]
 position = Vector2( -23.5451, 481.636 )
@@ -192,7 +191,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision/StaticBody2D3"]
-shape = SubResource( 4 )
+shape = SubResource("4")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="collision"]
 position = Vector2( 919.917, 481.636 )
@@ -201,4 +200,4 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision/StaticBody2D4"]
-shape = SubResource( 4 )
+shape = SubResource("4")

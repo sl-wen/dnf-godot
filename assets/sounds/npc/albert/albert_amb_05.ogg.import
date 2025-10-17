@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/albert_amb_05.ogg-d02f2a032b1724a6a0ad20b7e4f1fb30.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crm6ebhx4ew6w"
+path="res://.godot/imported/albert_amb_05.ogg-d02f2a032b1724a6a0ad20b7e4f1fb30.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/albert/albert_amb_05.ogg"
-dest_files=[ "res://.import/albert_amb_05.ogg-d02f2a032b1724a6a0ad20b7e4f1fb30.oggstr" ]
+dest_files=["res://.godot/imported/albert_amb_05.ogg-d02f2a032b1724a6a0ad20b7e4f1fb30.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

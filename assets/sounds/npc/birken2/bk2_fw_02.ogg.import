@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/bk2_fw_02.ogg-934b90d1c581969b0707589140022ffd.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctr4a0eqdl5of"
+path="res://.godot/imported/bk2_fw_02.ogg-934b90d1c581969b0707589140022ffd.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/birken2/bk2_fw_02.ogg"
-dest_files=[ "res://.import/bk2_fw_02.ogg-934b90d1c581969b0707589140022ffd.oggstr" ]
+dest_files=["res://.godot/imported/bk2_fw_02.ogg-934b90d1c581969b0707589140022ffd.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

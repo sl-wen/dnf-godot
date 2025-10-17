@@ -1,24 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://cgtxrdxpdjh4v"]
 
-[ext_resource path="res://src/scenes/town/Elvengard/stage_01.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/scenes/town/Gate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/scripts/town/Elvengard.gd" type="Script" id=4]
-[ext_resource path="res://src/scenes/town/Elvengard/stage_02.tscn" type="PackedScene" id=5]
+[ext_resource type="PackedScene" path="res://src/scenes/town/Elvengard/stage_01.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://src/scenes/town/Gate.tscn" id="3"]
+[ext_resource type="Script" uid="uid://c46e2rdm0fily" path="res://src/scripts/town/Elvengard.gd" id="4"]
+[ext_resource type="PackedScene" path="res://src/scenes/town/Elvengard/stage_02.tscn" id="5"]
 
 [node name="Elvengard" type="Node2D"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
-[node name="stage_01" parent="." instance=ExtResource( 2 )]
+[node name="stage_01" parent="." instance=ExtResource("2")]
 
-[node name="stage_02" parent="." instance=ExtResource( 5 )]
-position = Vector2( 2000, 0 )
+[node name="stage_02" parent="." instance=ExtResource("5")]
+position = Vector2(2000, 0)
+
+[node name="GrassMap" parent="stage_02/environment" index="0"]
+visible = false
+
+[node name="RoadMap" parent="stage_02/environment" index="1"]
+visible = false
 
 [node name="background" parent="stage_02/environment" index="5"]
-offset = Vector2( 2000, 0 )
-transform = Transform2D( 1, 0, 0, 1, 2000, 0 )
+offset = Vector2(2000, 0)
+transform = Transform2D(1, 0, 0, 1, 2000, 0)
 
-[node name="Gate" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 1000 )
+[node name="Gate" parent="." instance=ExtResource("3")]
+position = Vector2(21, 1017)
 
 [editable path="stage_02"]
 [editable path="stage_02/doors/to_stage_01"]

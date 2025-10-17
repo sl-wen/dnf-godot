@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/rino_fw_01.ogg-fece9d3e82eabef5d044d93905776448.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgapui5jhmrts"
+path="res://.godot/imported/rino_fw_01.ogg-fece9d3e82eabef5d044d93905776448.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/rino/rino_fw_01.ogg"
-dest_files=[ "res://.import/rino_fw_01.ogg-fece9d3e82eabef5d044d93905776448.oggstr" ]
+dest_files=["res://.godot/imported/rino_fw_01.ogg-fece9d3e82eabef5d044d93905776448.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

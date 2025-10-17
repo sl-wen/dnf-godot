@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource path="res://assets/images/map/hendonMyre/hmbartile.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/map/bg/hmbarmid.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/map/bg/hmbarfar.png" type="Texture" id=3]
-[ext_resource path="res://src/scripts/com/DoorArea.gd" type="Script" id=4]
-[ext_resource path="res://src/scripts/town/BaseStage.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://src/scenes/npc/Shusia.tscn" type="PackedScene" id=7]
+[ext_resource type="Texture2D" path="res://assets/images/map/hendonMyre/hmbartile.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/images/map/bg/hmbarmid.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/images/map/bg/hmbarfar.png" id="3"]
+[ext_resource type="Script" path="res://src/scripts/com/DoorArea.gd" id="4"]
+[ext_resource type="Script" path="res://src/scripts/town/BaseStage.gd" id="5"]
+[ext_resource type="Texture2D" path="res://icon.png" id="6"]
+[ext_resource type="PackedScene" path="res://src/scenes/npc/Shusia.tscn" id="7"]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.2205, 18.2085 )
@@ -27,11 +27,11 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
-shader_param/scale = null
+shader = SubResource("3")
+shader_parameter/scale = null
 
 [node name="stage_05" type="Node2D"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 __meta__ = {
 "_edit_horizontal_guides_": [ 362.0 ],
 "_edit_vertical_guides_": [ 1360.0, 1301.87, 59.1591 ]
@@ -43,30 +43,30 @@ bgm = "tavern"
 [node name="far" type="ParallaxLayer" parent="background"]
 motion_scale = Vector2( 0.7, 1 )
 
-[node name="Sprite" type="Sprite" parent="background/far"]
+[node name="Sprite2D" type="Sprite2D" parent="background/far"]
 position = Vector2( 192, 56 )
-texture = ExtResource( 3 )
+texture = ExtResource("3")
 centered = false
 region_rect = Rect2( 0, 0, 1002, 243 )
 
 [node name="mid" type="ParallaxLayer" parent="background"]
 motion_scale = Vector2( 0.9, 1 )
 
-[node name="Sprite" type="Sprite" parent="background/mid"]
+[node name="Sprite2D" type="Sprite2D" parent="background/mid"]
 position = Vector2( 140, 38 )
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 1002, 324 )
 
-[node name="hmbartile" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+[node name="hmbartile" type="Sprite2D" parent="."]
+texture = ExtResource("1")
 centered = false
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="stage" type="YSort" parent="."]
+[node name="stage" type="Node2D" parent="."]
 
 [node name="doors" type="Node2D" parent="."]
 
@@ -75,7 +75,7 @@ modulate = Color( 0.4, 0.00392157, 0.498039, 1 )
 position = Vector2( 91.9811, 380.557 )
 collision_layer = 0
 collision_mask = 2
-script = ExtResource( 4 )
+script = ExtResource("4")
 __meta__ = {
 "_edit_group_": true
 }
@@ -83,9 +83,9 @@ current = "stage_05"
 target = "stage_01"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="doors/to_stage_01"]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
-[node name="pos" type="Position2D" parent="doors/to_stage_01"]
+[node name="pos" type="Marker2D" parent="doors/to_stage_01"]
 position = Vector2( 100.019, 12 )
 
 [node name="to_Entrance" type="Area2D" parent="doors"]
@@ -93,7 +93,7 @@ modulate = Color( 0.4, 0.00392157, 0.498039, 1 )
 position = Vector2( 1272.18, 369.628 )
 collision_layer = 0
 collision_mask = 0
-script = ExtResource( 4 )
+script = ExtResource("4")
 __meta__ = {
 "_edit_group_": true
 }
@@ -102,14 +102,14 @@ type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="doors/to_Entrance"]
 rotation = -1.08036
-shape = SubResource( 2 )
+shape = SubResource("2")
 disabled = true
 
-[node name="pos" type="Position2D" parent="doors/to_Entrance"]
+[node name="pos" type="Marker2D" parent="doors/to_Entrance"]
 
-[node name="TopLeft" type="Position2D" parent="."]
+[node name="TopLeft" type="Marker2D" parent="."]
 
-[node name="BottomRight" type="Position2D" parent="."]
+[node name="BottomRight" type="Marker2D" parent="."]
 position = Vector2( 1360, 600 )
 
 [node name="collision" type="Node2D" parent="."]
@@ -120,18 +120,18 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="collision"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collision/StaticBody2D"]
-polygon = PoolVector2Array( -1.18624, 362, 1301.23, 362, 1301.87, 517.299, 59.1591, 516.851, 59.2031, 362, -1.18624, 362, -0.126778, 599.849, 1360, 599.849, 1360, -0.866547, -0.126778, 2.31183 )
+polygon = PackedVector2Array( -1.18624, 362, 1301.23, 362, 1301.87, 517.299, 59.1591, 516.851, 59.2031, 362, -1.18624, 362, -0.126778, 599.849, 1360, 599.849, 1360, -0.866547, -0.126778, 2.31183 )
 
-[node name="Susia" parent="." instance=ExtResource( 7 )]
-margin_left = 1015.22
-margin_top = 293.576
-margin_right = 1080.22
-margin_bottom = 310.576
+[node name="Susia" parent="." instance=ExtResource("7")]
+offset_left = 1015.22
+offset_top = 293.576
+offset_right = 1080.22
+offset_bottom = 310.576
 
-[node name="reflective" type="Sprite" parent="."]
+[node name="reflective" type="Sprite2D" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.215686 )
-material = SubResource( 4 )
+material = SubResource("4")
 position = Vector2( 677.388, 483.457 )
 scale = Vector2( 19.3588, 4 )
-texture = ExtResource( 6 )
+texture = ExtResource("6")

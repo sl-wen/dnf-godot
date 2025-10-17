@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/icondrop.ogg-0e63747a7af39099a728cc7d5a88d4be.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ddmo0a27tvet6"
+path="res://.godot/imported/icondrop.ogg-0e63747a7af39099a728cc7d5a88d4be.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/ui/icondrop.ogg"
-dest_files=[ "res://.import/icondrop.ogg-0e63747a7af39099a728cc7d5a88d4be.oggstr" ]
+dest_files=["res://.godot/imported/icondrop.ogg-0e63747a7af39099a728cc7d5a88d4be.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

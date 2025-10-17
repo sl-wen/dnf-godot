@@ -4,17 +4,17 @@
 
 [node name="environment" type="Node2D" parent="."]
 
-[node name="stage" type="YSort" parent="."]
+[node name="stage" type="Node2D" parent="."]
 
-[node name="objs" type="YSort" parent="stage"]
+[node name="objs" type="Node2D" parent="stage"]
 
-[node name="monster" type="YSort" parent="stage"]
+[node name="monster" type="Node2D" parent="stage"]
 
 [node name="doors" type="Node2D" parent="."]
 
-[node name="TopLeft" type="Position2D" parent="."]
+[node name="TopLeft" type="Marker2D" parent="."]
 
-[node name="BottomRight" type="Position2D" parent="."]
+[node name="BottomRight" type="Marker2D" parent="."]
 position = Vector2( 800, 600 )
 
 [node name="collision" type="Node2D" parent="."]

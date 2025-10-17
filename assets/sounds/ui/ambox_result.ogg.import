@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/ambox_result.ogg-450681893ff8d2114d093330b94ce2e2.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://brfxm2wbc8tnl"
+path="res://.godot/imported/ambox_result.ogg-450681893ff8d2114d093330b94ce2e2.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/ui/ambox_result.ogg"
-dest_files=[ "res://.import/ambox_result.ogg-450681893ff8d2114d093330b94ce2e2.oggstr" ]
+dest_files=["res://.godot/imported/ambox_result.ogg-450681893ff8d2114d093330b94ce2e2.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

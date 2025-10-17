@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 #class_name Character
 
 enum DIRECTION{
@@ -16,29 +16,29 @@ enum STATE{
 	SKILL
 }
 
-onready var main_body:KinematicBody2D = $Body;
+@onready var main_body:CharacterBody2D = $Body;
 #动画播放器
-onready var mainPlayer:AnimationPlayer = $MainPlayer;
+@onready var mainPlayer:AnimationPlayer = $MainPlayer;
 #身体
-onready var body:Sprite = $Body/body;
+@onready var body:Sprite2D = $Body/body;
 #影子
-onready var shadow:Sprite = $Body/shadow;
+@onready var shadow:Sprite2D = $Body/shadow;
 
-onready var weapon:Sprite = $Body/weapon;
+@onready var weapon:Sprite2D = $Body/weapon;
 #特效层
-onready var effect:Sprite = $Body/effect;
+@onready var effect:Sprite2D = $Body/effect;
 #摄像机
-onready var camera:Camera2D = $Camera2D;
+@onready var camera:Camera2D = $Camera2D;
 #双击跑计时器
-onready var dcTimer:Timer = $Double_Click_Timer;
+@onready var dcTimer:Timer = $Double_Click_Timer;
 #普通攻击连接计时器
-onready var combo_timer = $Combo_Timer;
+@onready var combo_timer = $Combo_Timer;
 #名字
-onready var nameLabel:Label =$Body/nameLabel;
+@onready var nameLabel:Label =$Body/nameLabel;
 #等级
-onready var lvLabel:Label = $Body/lvLabel;
+@onready var lvLabel:Label = $Body/lvLabel;
 #音频播放器
-onready var soundPlayer:AudioStreamPlayer = $soundPlayer;
+@onready var soundPlayer:AudioStreamPlayer = $soundPlayer;
 
 #按钮双击判定
 var input_data:Dictionary = {
@@ -76,7 +76,7 @@ var attackCanCombo:bool = true;
 var is_jumping:bool = false;
 
 func _ready():
-	nameLabel.text = DataManager.roleData.name;
+	nameLabel.text = DataManager.roleData.role_name;
 	lvLabel.text = "Lv." + str(DataManager.roleData.lv);
 
 func _process(_delta: float) -> void:
@@ -84,14 +84,14 @@ func _process(_delta: float) -> void:
 
 #设置摄像机边界
 func setCameralimit(top:float,left:float,bottom:float,right:float):
-	# warning-ignore:narrowing_conversion
-		camera.limit_top = round(top);
-	# warning-ignore:narrowing_conversion
-		camera.limit_left = round(left);
-	# warning-ignore:narrowing_conversion
-		camera.limit_bottom = round(bottom);
-	# warning-ignore:narrowing_conversion
-		camera.limit_right = round(right);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_top = round(top);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_left = round(left);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_bottom = round(bottom);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_right = round(right);
 	
 func setDisabled(value:bool) -> void:
 	print("设置玩家的碰撞")

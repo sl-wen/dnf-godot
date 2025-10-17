@@ -1,17 +1,17 @@
 extends Control
 
-onready var face:TextureRect = $face;
-onready var type:TextureRect = $type;
-onready var nameLabel:Label = $nameLabel;
-onready var progress:ColorRect = $progress;
+@onready var face:TextureRect = $face;
+@onready var type:TextureRect = $type;
+@onready var nameLabel:Label = $nameLabel;
+@onready var progress:ColorRect = $progress;
 
 var status:MonsterStatus;
 #一层的血量值
-export(int) var singleLayerHP:int = 100;
+@export var singleLayerHP: int = 100;
 #总血量
 var totalHP:int = 700;
 #当前血量
-var currentHP:int = 650 setget set_currentHP,get_currentHP;
+var currentHP:int = 650: get = get_currentHP, set = set_currentHP;
 
 func _ready() -> void:
 	pass

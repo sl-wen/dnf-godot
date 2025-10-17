@@ -1,22 +1,22 @@
 extends Control
 
-onready var nameLabel:Label = $bg/MarginContainer/VBoxContainer/NameLabel;
-onready var name2Label:Label = $bg/MarginContainer/VBoxContainer/Name2Label;
-onready var mpLabel:Label = $bg/MarginContainer/VBoxContainer/MPLabel;
+@onready var nameLabel:Label = $bg/MarginContainer/VBoxContainer/NameLabel;
+@onready var name2Label:Label = $bg/MarginContainer/VBoxContainer/Name2Label;
+@onready var mpLabel:Label = $bg/MarginContainer/VBoxContainer/MPLabel;
 #施法时间
-onready var castTime:Label = $bg/MarginContainer/VBoxContainer/HBoxContainer/CastTime;
+@onready var castTime:Label = $bg/MarginContainer/VBoxContainer/HBoxContainer/CastTime;
 #冷却时间
-onready var coolTime:Label = $bg/MarginContainer/VBoxContainer/HBoxContainer/CoolTime;
+@onready var coolTime:Label = $bg/MarginContainer/VBoxContainer/HBoxContainer/CoolTime;
 #消耗无色小晶块
-onready var consume:Label = $bg/MarginContainer/VBoxContainer/Consume;
+@onready var consume:Label = $bg/MarginContainer/VBoxContainer/Consume;
 #操作指令
-onready var operate:Label = $bg/MarginContainer/VBoxContainer/Operate;
+@onready var operate:Label = $bg/MarginContainer/VBoxContainer/Operate;
 #技能伤害属性
-onready var levelProperty:Label = $bg/MarginContainer/VBoxContainer/LevelProperty;
+@onready var levelProperty:Label = $bg/MarginContainer/VBoxContainer/LevelProperty;
 #技能描述
-onready var explain:Label = $bg/MarginContainer/VBoxContainer/Explain;
+@onready var explain:Label = $bg/MarginContainer/VBoxContainer/Explain;
 #锁定提示
-onready var lockTip:Label = $bg/MarginContainer/VBoxContainer/LockTip;
+@onready var lockTip:Label = $bg/MarginContainer/VBoxContainer/LockTip;
 
 #var origin = "";
 #var slot_index:int = 0;
@@ -34,7 +34,7 @@ func init_data():
 	var skl:SkillConfig = ConfigManager.skillConfigProxy.get_skl_by_ID(DataManager.roleData.job_base,id);
 	nameLabel.text = skl.name + " Lv " + str(lv);
 	name2Label.text = skl.name2;
-	if not skl.consume_MP.empty():
+	if not skl.consume_MP.is_empty():
 		var mp:int = int(cal_diff(skl.consume_MP,skl.maximum_level));
 		mpLabel.text = "MP %d" % [mp];
 	else:
@@ -44,13 +44,13 @@ func init_data():
 		castTime.text = "施放方式：被动";
 		coolTime.text = "";
 	else:
-		if not skl.casting_time.empty():
+		if not skl.casting_time.is_empty():
 			var cast:float = cal_diff(skl.casting_time,skl.maximum_level) / 1000;
 			castTime.text = "施放时间：%.1f秒" % [cast];
 		else:
 			castTime.text = "瞬发";
 		
-		if not skl.cool_time.empty():
+		if not skl.cool_time.is_empty():
 			var cool:float = cal_diff(skl.cool_time,skl.maximum_level) / 1000;
 			coolTime.text = "冷却时间:%.1f秒" % [cool];
 		else:
@@ -73,11 +73,17 @@ func init_data():
 		for arr in skl.level_property_value:
 			if arr[0] < 0:
 				pass
-				var info = skl.level_info[lv - 1];
-				values.append(info[arr[1]] * arr[2]);
+				if lv > 0 and lv <= skl.level_info.size():
+					var info = skl.level_info[lv - 1];
+					values.append(info[arr[1]] * arr[2]);
+				else:
+					values.append(0);  # 默认值
 			else:
 				if skl.ID == 1001: #裂波斩
-					values.append(skl.static_data[1].to_int());
+					if skl.static_data.size() > 1:
+						values.append(skl.static_data[1].to_int());
+					else:
+						values.append(0);  # 默认值
 		levelProperty.text = skl.level_property % values;
 		levelProperty.visible = true;
 		$bg/MarginContainer/VBoxContainer/HSeparator2.visible = true;
@@ -106,8 +112,8 @@ func cal_diff(data:Array,max_lv:int) -> float:
 
 func _on_LockTip_draw():
 	pass # Replace with function body.
-	rect_size.y = lockTip.rect_position.y + lockTip.rect_size.y + 12;
+	size.y = lockTip.position.y + lockTip.size.y + 12;
 	
 	var mouse_pos:Vector2 = get_global_mouse_position();
-	var pos:Vector2 = Vector2(Utils.less_check(mouse_pos.x - rect_size.x - offset_pos.x,0),Utils.less_check(mouse_pos.y - rect_size.y - offset_pos.y,0));
-	rect_position = pos;
+	var pos:Vector2 = Vector2(Utils.less_check(mouse_pos.x - size.x - offset_pos.x,0),Utils.less_check(mouse_pos.y - size.y - offset_pos.y,0));
+	position = pos;

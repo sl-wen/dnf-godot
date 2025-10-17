@@ -3,8 +3,8 @@ extends Node
 
 signal role_create_ok;
 
-const SAVE_DIR = "user://saves/";
-var save_path = SAVE_DIR + "%s.dat";
+const SAVE_DIR = "user://saves/"
+var save_path = SAVE_DIR + "%s.dat"
 
 #角色数据
 var roleData:Dictionary = {"name":"阿拉德","job":"swordman","lv":"12"};
@@ -20,27 +20,34 @@ func _ready():
 
 #数据保存到本地
 func save_data():
-	
-	var dir = Directory.new();
-	if not dir.dir_exists(SAVE_DIR):
-		dir.make_dir_recursive(SAVE_DIR);
-	
-	var save_game := File.new();
-	var error = save_game.open_encrypted_with_pass(save_path % [roleData["name"]],File.WRITE,"DNFyU9w18");
-	if error == OK:
-		save_game.store_var(data);
-		save_game.close();
+	if not DirAccess.dir_exists_absolute(SAVE_DIR):
+		DirAccess.make_dir_recursive_absolute(SAVE_DIR)
+	var character_name = ""
+	if data.has("role") and data["role"].has("name"):
+		character_name = data["role"]["name"]
+	else:
+		character_name = roleData["name"]
+	var path:String = save_path % [character_name]
+	var save_game := FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, "DNFyU9w18")
+	if save_game != null:
+		save_game.store_var(data)
+		save_game.close()
 
 #从本地加载数据
-func load_data():
-	var path = save_path % [roleData["name"]];
-	var save_game = File.new();
-	if not save_game.file_exists(path):
-		return;
-	var error = save_game.open_encrypted_with_pass(path, File.READ,"DNFyU9w18");
-	if error == OK:
-		data = save_game.get_var();
-	save_game.close();
+func load_data(character_name: String = ""):
+	var name_to_use = character_name
+	if name_to_use == "":
+		if data.has("role") and data["role"].has("name"):
+			name_to_use = data["role"]["name"]
+		else:
+			name_to_use = roleData["name"]
+	var path:String = save_path % [name_to_use]
+	if not FileAccess.file_exists(path):
+		return
+	var save_game := FileAccess.open_encrypted_with_pass(path, FileAccess.READ, "DNFyU9w18")
+	if save_game != null:
+		data = save_game.get_var()
+		save_game.close()
 
 func set_equipData(key:String,value):
 	equipData[key] = value;
@@ -48,59 +55,56 @@ func set_equipData(key:String,value):
 
 #获取全部的角色数据
 func get_role_list() -> Array:
-	var list:Array = [];
-	
-	var name_list:Array = [];
-	
-	var dir = Directory.new();
-	if dir.open(SAVE_DIR) == OK:
-		dir.list_dir_begin();
-		var file_name = dir.get_next();
+	var list:Array = []
+	var name_list:Array = []
+	var dir := DirAccess.open(SAVE_DIR)
+	if dir != null:
+		dir.list_dir_begin()  # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547# TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
+		var file_name := dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir():
-				name_list.append(file_name);
-			file_name = dir.get_next();
+				name_list.append(file_name)
+			file_name = dir.get_next()
 		dir.list_dir_end()
-	
-	for i in range(0,name_list.size()):
-		var path = SAVE_DIR + name_list[i];
-		var save_game = File.new();
-		if not save_game.file_exists(path):
-			continue;
-		var error = save_game.open_encrypted_with_pass(path, File.READ,"DNFyU9w18");
-		if error == OK:
-			var file_data = save_game.get_var();
-			list.append(file_data);
-		save_game.close();
-	
-	return list;
+	for i in range(0, name_list.size()):
+		var path:String = SAVE_DIR + name_list[i]
+		if not FileAccess.file_exists(path):
+			continue
+		var save_game := FileAccess.open_encrypted_with_pass(path, FileAccess.READ, "DNFyU9w18")
+		if save_game != null:
+			var file_data = save_game.get_var()
+			list.append(file_data)
+			save_game.close()
+	return list
 
 #检查名字
 func check_name(n:String) -> bool:
-	var b:bool = true;
-	var dir = Directory.new();
-	if dir.open(SAVE_DIR) == OK:
-		dir.list_dir_begin();
-		var file_name = dir.get_next();
+	var b:bool = true
+	var dir := DirAccess.open(SAVE_DIR)
+	if dir != null:
+		dir.list_dir_begin()  # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547# TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
+		var file_name := dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir():
 				if file_name.find(n) != -1:
-					b = false;
-			file_name = dir.get_next();
+					b = false
+			file_name = dir.get_next()
 		dir.list_dir_end()
-	return b;
+	return b
 	
 #创建角色
 func createRole(n:String,job:String):
-	roleData.name = n;
-	roleData.job_base = job;
-	roleData.job = job;
-	roleData.lv = 1;
-	roleData.expe = 0;
-	roleData.sp = 0;
-	roleData.gold = 0;
-	roleData.aweek = 0;
-	data.role = roleData;
+	var role_data = {
+		"name": n,
+		"job_base": job,
+		"job": job,
+		"lv": 1,
+		"expe": 0,
+		"sp": 0,
+		"gold": 0,
+		"aweek": 0
+	}
+	data["role"] = role_data;
 	skill.clear();
 	#初始化技能面板
 	for _i in range(0,5):
@@ -157,28 +161,48 @@ func createRole(n:String,job:String):
 
 #进游戏时初始化数据
 func initData():
+	# 安全检查：确保数据不为空
+	if data.is_empty():
+		print("错误：角色数据为空，无法初始化")
+		return
+	
+	if not data.has("role") or data["role"] == null:
+		print("错误：角色基础数据缺失")
+		return
+	
+	var role_data = data["role"]
+	if not role_data.has("name") or role_data["name"] == null or role_data["name"] == "":
+		print("错误：角色名称为空")
+		return
+	
 	#人物数据
-	DataManager.roleData.name = data["role"]["name"];
-	DataManager.roleData.job_base = data["role"]["job_base"];
-	DataManager.roleData.job = data["role"]["job"];
-	DataManager.roleData.lv = data["role"]["lv"];
-	DataManager.roleData.expe = data["role"]["expe"];
-	DataManager.roleData.sp = data["role"]["sp"];
-	DataManager.roleData.gold = data["role"]["gold"];
-	DataManager.roleData.aweek = data["role"]["aweek"];
+	DataManager.roleData.role_name = role_data["name"];
+	# 兼容旧存档：若缺失 job_base，则使用 job
+	var _job_base = role_data["job_base"] if role_data.has("job_base") else role_data["job"]
+	DataManager.roleData.job_base = _job_base;
+	DataManager.roleData.job = role_data["job"];
+	DataManager.roleData.lv = role_data["lv"];
+	DataManager.roleData.expe = role_data["expe"];
+	DataManager.roleData.sp = role_data["sp"];
+	DataManager.roleData.gold = role_data["gold"];
+	DataManager.roleData.aweek = role_data["aweek"];
 	#初始化技能
-	DataManager.skillData.data = data["skill"];
+	if data.has("skill") and data["skill"] != null:
+		DataManager.skillData.data = data["skill"];
 	#初始化技能快捷栏
-	DataManager.skillShortcutData.data = data["skillShort"];
+	if data.has("skillShort") and data["skillShort"] != null:
+		DataManager.skillShortcutData.data = data["skillShort"];
 	#初始化背包数据
-	DataManager.invData.data = data["inventory"];
+	if data.has("inventory") and data["inventory"] != null:
+		DataManager.invData.data = data["inventory"];
 	#初始化道具快捷栏
-	DataManager.invShortcutData.data = data["invShort"];
+	if data.has("invShort") and data["invShort"] != null:
+		DataManager.invShortcutData.data = data["invShort"];
 	#初始化装备
-	DataManager.equipData.equipment_data = data["equip"];
+	if data.has("equip") and data["equip"] != null:
+		DataManager.equipData.equipment_data = data["equip"];
 	#初始化仓库
-	DataManager.storateData.data = data["storate"];
+	if data.has("storate") and data["storate"] != null:
+		DataManager.storateData.data = data["storate"];
 	#初始化人物属性
 	DataManager.init_data();
-	
-	

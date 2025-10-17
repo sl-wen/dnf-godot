@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/rino_amb_03.ogg-0e878b3808e4768db7e21497c93a2c51.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxu5b15j16od4"
+path="res://.godot/imported/rino_amb_03.ogg-0e878b3808e4768db7e21497c93a2c51.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/rino/rino_amb_03.ogg"
-dest_files=[ "res://.import/rino_amb_03.ogg-0e878b3808e4768db7e21497c93a2c51.oggstr" ]
+dest_files=["res://.godot/imported/rino_amb_03.ogg-0e878b3808e4768db7e21497c93a2c51.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

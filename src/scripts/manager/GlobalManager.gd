@@ -4,7 +4,7 @@ signal change_dungeon;
 
 var state := {}
 #拿到主关卡的引用
-# warning-ignore:unused_class_variable
+@warning_ignore("unused_private_class_variable")
 var main:Main = null;
 #当前背景音乐名字
 var current_bgm_name:String = "";
@@ -57,5 +57,5 @@ func open_worldmap():
 func set_door_to_use():
 	emit_signal("setDoorToUse",true);
 #切换副本
-func change_dungeon():
+func trigger_change_dungeon():
 	emit_signal("change_dungeon");

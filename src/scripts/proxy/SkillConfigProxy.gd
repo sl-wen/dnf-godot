@@ -37,7 +37,10 @@ func _init_skl(job:String):
 		if typeof(dic["shake_screen"])  == TYPE_STRING:
 			skl.shake_screen = dic["shake_screen"];
 		skl.icon = dic["icon"];
-		skl.command = dic["command"];
+		if typeof(dic["command"]) == TYPE_STRING:
+			skl.command = dic["command"]
+		else:
+			skl.command = ""
 		if typeof(dic["skill_command_advantage"]) == TYPE_STRING:
 			skl.skill_command_advantage = dic["skill_command_advantage"].split("<A>");
 		if typeof(dic["consume_MP"]) == TYPE_STRING:

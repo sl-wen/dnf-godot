@@ -1,9 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export(String) var type:String = "normal";
+@export var type: String = "normal";
 
-onready var body:Sprite = $BodyPivot/Offset/Body;
-onready var shadow:Sprite = $Shadow;
+@onready var body:Sprite2D = $BodyPivot/Offset/Body;
+@onready var shadow:Sprite2D = $Shadow;
 var knockback = Vector2.ZERO;
 #属性
 var status:MonsterStatus;
@@ -16,7 +16,9 @@ func _physics_process(_delta):
 	flip_h(direction);
 	
 	knockback = knockback.move_toward(Vector2.ZERO,_delta * 200);
-	knockback = move_and_slide(knockback);
+	velocity = knockback
+	move_and_slide()
+	knockback = velocity;
 	
 func flip_h(value:bool):
 	body.flip_h = value;
@@ -32,7 +34,16 @@ func _on_HurtBox_area_entered(area):
 #判断方向
 func get_direction() -> bool:
 	var value:bool = false;
-#	owner.get_node("Character").global_position;
+	
+	# 安全检查：确保GlobalManager.main和player都不为空
+	if GlobalManager.main == null:
+		print("警告：GlobalManager.main为空")
+		return value;
+	
+	if GlobalManager.main.player == null:
+		print("警告：GlobalManager.main.player为空")
+		return value;
+	
 	var player_position:Vector2 = GlobalManager.main.player.global_position;
 	if player_position.x < global_position.x:
 		value = true;

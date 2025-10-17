@@ -1,46 +1,46 @@
 extends Control
 
-onready var roleBtn:Button = $roleBtn;
-onready var hp:Label = $ScrollContainer/Control/hpItem/valueLabel;
-onready var mp:Label = $ScrollContainer/Control/mpItem/valueLabel;
-onready var STR:Label = $ScrollContainer/Control/STRItem/valueLabel;
-onready var WIS:Label = $ScrollContainer/Control/WISItem/valueLabel;
-onready var VIT:Label = $ScrollContainer/Control/VITItem/valueLabel;
-onready var MND:Label = $ScrollContainer/Control/MNDItem/valueLabel;
-onready var physical_attack = $ScrollContainer/Control/physical_attackItem/valueLabel;
-onready var magical_attack = $ScrollContainer/Control/magical_attackItem/valueLabel;
-onready var physical_defense = $ScrollContainer/Control/physical_defenseItem/valueLabel;
-onready var magical_defense = $ScrollContainer/Control/magical_defenseItem/valueLabel;
-onready var physical_critical = $ScrollContainer/Control/physical_criticalItem/valueLabel;
-onready var magical_critcal = $ScrollContainer/Control/magical_criticalItem/valueLabel;
-onready var attack_speed = $ScrollContainer/Control/attack_speedItem/valueLabel;
-onready var cast_speed = $ScrollContainer/Control/cast_speedItem/valueLabel;
-onready var move_speed = $ScrollContainer/Control/move_speedItem/valueLabel;
-onready var stuck = $ScrollContainer/Control/stuckItem/valueLabel;
-onready var stuck_resistance = $ScrollContainer/Control/stuck_resistanceItem/valueLabel;
-onready var hp_regen_speed = $ScrollContainer/Control/hp_regen_speedItem/valueLabel;
-onready var mp_regen_speed = $ScrollContainer/Control/mp_regen_speedItem/valueLabel;
-onready var immobility = $ScrollContainer/Control/immobilityItem/valueLabel;
-onready var hit_recovery = $ScrollContainer/Control/hit_recoveryItem/valueLabel;
-onready var fire_attack = $ScrollContainer/Control/fire_attackItem/valueLabel;
-onready var fire_resistance = $ScrollContainer/Control/fire_resistanceItem/valueLabel;
-onready var water_attack = $ScrollContainer/Control/water_attackItem/valueLabel;
-onready var water_resistance = $ScrollContainer/Control/water_resistanceItem/valueLabel;
-onready var light_attack = $ScrollContainer/Control/light_attackItem/valueLabel;
-onready var light_resistance = $ScrollContainer/Control/light_resistanceItem/valueLabel;
-onready var dark_attack = $ScrollContainer/Control/dark_attackItem/valueLabel;
-onready var dark_resistance = $ScrollContainer/Control/dark_resistanceItem/valueLabel;
+@onready var roleBtn:Button = $roleBtn;
+@onready var hp:Label = $ScrollContainer/Control/hpItem/valueLabel;
+@onready var mp:Label = $ScrollContainer/Control/mpItem/valueLabel;
+@onready var STR:Label = $ScrollContainer/Control/STRItem/valueLabel;
+@onready var WIS:Label = $ScrollContainer/Control/WISItem/valueLabel;
+@onready var VIT:Label = $ScrollContainer/Control/VITItem/valueLabel;
+@onready var MND:Label = $ScrollContainer/Control/MNDItem/valueLabel;
+@onready var physical_attack = $ScrollContainer/Control/physical_attackItem/valueLabel;
+@onready var magical_attack = $ScrollContainer/Control/magical_attackItem/valueLabel;
+@onready var physical_defense = $ScrollContainer/Control/physical_defenseItem/valueLabel;
+@onready var magical_defense = $ScrollContainer/Control/magical_defenseItem/valueLabel;
+@onready var physical_critical = $ScrollContainer/Control/physical_criticalItem/valueLabel;
+@onready var magical_critcal = $ScrollContainer/Control/magical_criticalItem/valueLabel;
+@onready var attack_speed = $ScrollContainer/Control/attack_speedItem/valueLabel;
+@onready var cast_speed = $ScrollContainer/Control/cast_speedItem/valueLabel;
+@onready var move_speed = $ScrollContainer/Control/move_speedItem/valueLabel;
+@onready var stuck = $ScrollContainer/Control/stuckItem/valueLabel;
+@onready var stuck_resistance = $ScrollContainer/Control/stuck_resistanceItem/valueLabel;
+@onready var hp_regen_speed = $ScrollContainer/Control/hp_regen_speedItem/valueLabel;
+@onready var mp_regen_speed = $ScrollContainer/Control/mp_regen_speedItem/valueLabel;
+@onready var immobility = $ScrollContainer/Control/immobilityItem/valueLabel;
+@onready var hit_recovery = $ScrollContainer/Control/hit_recoveryItem/valueLabel;
+@onready var fire_attack = $ScrollContainer/Control/fire_attackItem/valueLabel;
+@onready var fire_resistance = $ScrollContainer/Control/fire_resistanceItem/valueLabel;
+@onready var water_attack = $ScrollContainer/Control/water_attackItem/valueLabel;
+@onready var water_resistance = $ScrollContainer/Control/water_resistanceItem/valueLabel;
+@onready var light_attack = $ScrollContainer/Control/light_attackItem/valueLabel;
+@onready var light_resistance = $ScrollContainer/Control/light_resistanceItem/valueLabel;
+@onready var dark_attack = $ScrollContainer/Control/dark_attackItem/valueLabel;
+@onready var dark_resistance = $ScrollContainer/Control/dark_resistanceItem/valueLabel;
 
 
 func _ready():
-	roleBtn.pressed = true;
+	roleBtn.button_pressed = true;
 	initStatus();
 
 func initStatus():
 	var role:RoleData = DataManager.roleData;
 	hp.text = str(role.hp) + "/" + str(role.max_hp);
 	mp.text = str(role.mp) + "/" + str(role.max_mp);
-	STR.text = "â–²â–¼ â†‘â†“í ½í¸€í ½í¸€í ½í¸€" + str(role.STR);
+	STR.text = "â–²â–¼ â†‘â†“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + str(role.STR);
 	WIS.text = "â–³" + str(role.WIS);
 	VIT.text = str(role.VIT);
 	MND.text = str(role.MND);

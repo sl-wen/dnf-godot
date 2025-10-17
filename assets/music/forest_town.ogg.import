@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/forest_town.ogg-41b322103a7dfa8ac5dfaa7f8779cbec.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cq11hmmgf7k5j"
+path="res://.godot/imported/forest_town.ogg-41b322103a7dfa8ac5dfaa7f8779cbec.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/forest_town.ogg"
-dest_files=[ "res://.import/forest_town.ogg-41b322103a7dfa8ac5dfaa7f8779cbec.oggstr" ]
+dest_files=["res://.godot/imported/forest_town.ogg-41b322103a7dfa8ac5dfaa7f8779cbec.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

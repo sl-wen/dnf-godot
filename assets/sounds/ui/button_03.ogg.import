@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/button_03.ogg-adbc8f07b8ff5b1dca08ed571533e915.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://6sx3mygbv2bb"
+path="res://.godot/imported/button_03.ogg-adbc8f07b8ff5b1dca08ed571533e915.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/ui/button_03.ogg"
-dest_files=[ "res://.import/button_03.ogg-adbc8f07b8ff5b1dca08ed571533e915.oggstr" ]
+dest_files=["res://.godot/imported/button_03.ogg-adbc8f07b8ff5b1dca08ed571533e915.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

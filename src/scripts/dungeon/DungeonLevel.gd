@@ -1,10 +1,10 @@
 extends Node2D
 
 #dungeon
-export(String) var type = "dungeon";
+@export var type: String = "dungeon";
 
 var load_state:int = 0;
-var player:KinematicBody2D;
+var player:CharacterBody2D;
 var bornStage:String = "";
 
 func _ready() -> void:

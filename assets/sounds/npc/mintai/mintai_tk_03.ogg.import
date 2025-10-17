@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/mintai_tk_03.ogg-ceca33bc1912627e8b612639c8ecd5ae.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqkdxs7xfrktm"
+path="res://.godot/imported/mintai_tk_03.ogg-ceca33bc1912627e8b612639c8ecd5ae.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/mintai/mintai_tk_03.ogg"
-dest_files=[ "res://.import/mintai_tk_03.ogg-ceca33bc1912627e8b612639c8ecd5ae.oggstr" ]
+dest_files=["res://.godot/imported/mintai_tk_03.ogg-ceca33bc1912627e8b612639c8ecd5ae.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

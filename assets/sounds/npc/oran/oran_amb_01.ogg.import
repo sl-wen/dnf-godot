@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/oran_amb_01.ogg-89f54b23a9cc8beaf3da56b02f39804f.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dbn1lcb72adw0"
+path="res://.godot/imported/oran_amb_01.ogg-89f54b23a9cc8beaf3da56b02f39804f.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/oran/oran_amb_01.ogg"
-dest_files=[ "res://.import/oran_amb_01.ogg-89f54b23a9cc8beaf3da56b02f39804f.oggstr" ]
+dest_files=["res://.godot/imported/oran_amb_01.ogg-89f54b23a9cc8beaf3da56b02f39804f.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,23 +1,23 @@
-extends KinematicBody2D
+extends CharacterBody2D
 # The Player is a KinematicBody2D, in other words a physics-driven object.
 # It can move, collide with the world, etc...
 # The player has a state machine, but the body and the state machine are separate.
 
 #signal direction_changed(new_direction)
 
-onready var camera:Camera2D = $Camera2D;
-onready var body:Sprite = $BodyPivot/Offset/Body;
-onready var shadow:Sprite = $Shadow;
-onready var weapon:Sprite = $BodyPivot/Offset/Weapon;
-onready var animationPlayer:AnimationPlayer = $AnimationPlayer;
+@onready var camera:Camera2D = $Camera2D;
+@onready var body:Sprite2D = $BodyPivot/Offset/Body;
+@onready var shadow:Sprite2D = $Shadow;
+@onready var weapon:Sprite2D = $BodyPivot/Offset/Weapon;
+@onready var animationPlayer:AnimationPlayer = $AnimationPlayer;
 #
-onready var hitPivot:Position2D = $BodyPivot/Offset/hitPivot;
-onready var hitbox:Area2D = $BodyPivot/Offset/hitPivot/Hitbox;
+@onready var hitPivot:Marker2D = $BodyPivot/Offset/hitPivot;
+@onready var hitbox:Area2D = $BodyPivot/Offset/hitPivot/Hitbox;
 
-var look_direction = Vector2.RIGHT setget set_look_direction
+var look_direction = Vector2.RIGHT: set = set_look_direction
 
 func take_damage(attacker, amount, effect = null):
-	if is_a_parent_of(attacker):
+	if is_ancestor_of(attacker):
 		return
 	$States/Stagger.knockback_direction = (attacker.global_position - global_position).normalized()
 	$Health.take_damage(amount, effect)
@@ -35,14 +35,14 @@ func set_look_direction(value:Vector2):
 
 #设置摄像机边界
 func setCameralimit(top:float,left:float,bottom:float,right:float):
-	# warning-ignore:narrowing_conversion
-		camera.limit_top = round(top);
-	# warning-ignore:narrowing_conversion
-		camera.limit_left = round(left);
-	# warning-ignore:narrowing_conversion
-		camera.limit_bottom = round(bottom);
-	# warning-ignore:narrowing_conversion
-		camera.limit_right = round(right);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_top = round(top);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_left = round(left);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_bottom = round(bottom);
+	@warning_ignore("narrowing_conversion")
+	camera.limit_right = round(right);
 		
 #翻转贴图
 func flip_h(value:bool):
@@ -51,4 +51,3 @@ func flip_h(value:bool):
 	weapon.flip_h = value;
 	hitPivot.scale.x = -1 if value else 1;
 #	effect.flip_h = value;
-

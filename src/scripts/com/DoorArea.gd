@@ -6,14 +6,14 @@ enum TYPE{
 	TOENTRANCE
 }
 #当前
-export(String) var current:String;
+@export var current: String;
 #目标
-export(String) var target:String;
+@export var target: String;
 #过门之后的stage
-export(String) var stage:String = "";
+@export var stage: String = "";
 
 #门类型
-export(TYPE) var type;
+@export var type: TYPE;
 
 func _ready() -> void:
 	pass
@@ -39,11 +39,11 @@ func _on_doorArea_body_entered(_body: Node) -> void:
 			GlobalManager.state.current = current;
 			GlobalManager.state.worldmap_name = target;
 			GlobalManager.open_worldmap();
-	var _err = connect("body_entered", self, "_on_doorArea_body_entered", [], CONNECT_DEFERRED | CONNECT_ONESHOT)
+	var _err = connect("body_entered", Callable(self, "_on_doorArea_body_entered"), Object.CONNECT_DEFERRED | Object.CONNECT_ONE_SHOT)
 	
 #玩家离开区域
 func _on_doorArea_body_exited(_body: Node) -> void:
-	var _err = connect("body_entered", self, "_on_doorArea_body_exited", [], CONNECT_DEFERRED | CONNECT_ONESHOT)
+	var _err = connect("body_entered", Callable(self, "_on_doorArea_body_exited"), Object.CONNECT_DEFERRED | Object.CONNECT_ONE_SHOT)
 #	setState(false);
 #	print("离开门区域")
 #	GlobalManager.set_door_to_use();
@@ -58,12 +58,12 @@ func setState(value:bool):
 	
 #开启碰撞连接
 func setConnect():
-	if not is_connected("body_entered",self,"_on_doorArea_body_entered"):
-		var _err = connect("body_entered", self, "_on_doorArea_body_entered", [], CONNECT_DEFERRED | CONNECT_ONESHOT)
-		_err = connect("body_exited", self, "_on_doorArea_body_exited", [], CONNECT_DEFERRED | CONNECT_ONESHOT)
+	if not is_connected("body_entered", Callable(self, "_on_doorArea_body_entered")):
+		var _err = connect("body_entered", Callable(self, "_on_doorArea_body_entered"), Object.CONNECT_DEFERRED | Object.CONNECT_ONE_SHOT)
+		_err = connect("body_exited", Callable(self, "_on_doorArea_body_exited"), Object.CONNECT_DEFERRED | Object.CONNECT_ONE_SHOT)
 	
 #关闭碰撞连接
 func setDisconnect():
-	if is_connected("body_entered",self,"_on_doorArea_body_entered"):
-		disconnect("body_entered", self, "_on_doorArea_body_entered")
-		disconnect("body_exited", self, "_on_doorArea_body_exited")
+	if is_connected("body_entered", Callable(self, "_on_doorArea_body_entered")):
+		disconnect("body_entered", Callable(self, "_on_doorArea_body_entered"))
+		disconnect("body_exited", Callable(self, "_on_doorArea_body_exited"))

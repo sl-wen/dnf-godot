@@ -2,12 +2,12 @@ extends Control
 
 var slot_resource = preload("res://src/scenes/UI/slot/StorateSlot.tscn")
 
-onready var gridcontainer = $GridContainer;
+@onready var gridcontainer = $GridContainer;
 
 func _ready():
 	var data:Array = DataManager.storateData.data;
 	for item in data:
-		var slot = slot_resource.instance();
+		var slot = slot_resource.instantiate();
 		if not item == null:
 			var icon_path = GLOBALS_TYPE.ICON_PATH + ConfigManager.equipConfigProxy.get_item_icon(item.id);
 			var icon_texture = load(icon_path);

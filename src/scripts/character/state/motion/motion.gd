@@ -4,6 +4,7 @@ extends "res://src/scripts/state_machine/state.gd"
 func handle_input(event):
 	if event.is_action_pressed("simulate_damage"):
 		emit_signal("finished", "damage")
+	return super.handle_input(event)
 
 
 func get_input_direction():

@@ -1,7 +1,7 @@
 extends Button
 
-onready var clickSound:AudioStreamPlayer = $ClickSound;
-onready var enteredSound := $EnteredSound;
+@onready var clickSound:AudioStreamPlayer = $ClickSound;
+@onready var enteredSound := $EnteredSound;
 
 func _ready():
 	pass

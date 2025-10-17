@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-onready var normalHp:Control = $Monster_HP_Normal;
-onready var eliteHP:Control = $Monster_HP_Elite;
-onready var bossHp:Control = $Monster_HP_BOSS;
+@onready var normalHp:Control = $Monster_HP_Normal;
+@onready var eliteHP:Control = $Monster_HP_Elite;
+@onready var bossHp:Control = $Monster_HP_BOSS;
 
 
 func _ready() -> void:

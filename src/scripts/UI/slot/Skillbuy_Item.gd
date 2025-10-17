@@ -1,20 +1,20 @@
 extends TextureButton
 
 #名字
-onready var nameLabel:Label = $nameLabel;
+@onready var nameLabel:Label = $nameLabel;
 #图标
-onready var icon:TextureRect = $icon;
+@onready var icon:TextureRect = $icon;
 #前置技能
-onready var notip:TextureRect = $notip;
+@onready var notip:TextureRect = $notip;
 #人物等级需求
-onready var lvtip:TextureRect = $Lvtip;
+@onready var lvtip:TextureRect = $Lvtip;
 #等级需求文本
-onready var lv_tip:Label = $lv_tip;
+@onready var lv_tip:Label = $lv_tip;
 #SP需求
-onready var spLabel:Label = $spLabel;
-onready var select:NinePatchRect = $select;
+@onready var spLabel:Label = $spLabel;
+@onready var select:NinePatchRect = $select;
 #技能不能学的时候显示红色图片
-onready var red_color:ColorRect = $red_color;
+@onready var red_color:ColorRect = $red_color;
 #技能配置表
 var skl:SkillConfig;
 #技能当前要学习的等级
@@ -41,10 +41,10 @@ func init_data():
 	
 	#检查SP
 	if skl.purchase_cost > DataManager.roleData.sp:
-		spLabel.set("custom_colors/font_color","ff3232");
+		spLabel.set("theme_override_colors/font_color","ff3232");
 		can_learn = false;
 	else:
-		spLabel.set("custom_colors/font_color","ffffff");
+		spLabel.set("theme_override_colors/font_color","ffffff");
 	
 	#人物等级
 	var role_lv:int = DataManager.roleData.lv;
@@ -74,10 +74,10 @@ func init_data():
 	
 	
 	if can_learn == false:
-		nameLabel.set("custom_colors/font_color","ff3232");
+		nameLabel.set("theme_override_colors/font_color","ff3232");
 		red_color.visible = true;
 	else:
-		nameLabel.set("custom_colors/font_color","ffffff");
+		nameLabel.set("theme_override_colors/font_color","ffffff");
 		red_color.visible = false;
 	
 	

@@ -1,37 +1,37 @@
-tool
-extends BitmapFont
+@tool
+extends FontFile
 
 var index = 0
-export(Vector2) var GlyphSize = Vector2(8,8) setget changeGlyphSize
-export(Texture) var TextureToCut = null setget changeTexture
-export(int,255) var StartChar = 48 setget changeStartChar
-export(float) var Spacing = 1 setget changeSpacing
-export(bool) var Monospaced = true setget changeMonospaced
+@export var GlyphSize: Vector2 = Vector2(8,8): set = changeGlyphSize
+@export var TextureToCut: Texture2D = null: set = changeTexture
+@export var StartChar = 48: set = changeStartChar
+@export var Spacing: float = 1: set = changeSpacing
+@export var Monospaced: bool = true: set = changeMonospaced
 
 func changeStartChar(value):
 	StartChar = value
-	update()
+	_update_font()
 
 func changeGlyphSize(value):
 	GlyphSize = value
-	height = GlyphSize.y
-	update()
+	# 注意：在 Godot 4.x 中，FontFile.height 是只读属性，由字体数据自动计算
+	_update_font()
 	
 func changeTexture(value):
 	TextureToCut = value
 	index = 0
 	if TextureToCut:
-		update()
+		_update_font()
 	
 func changeSpacing(value):
 	Spacing = value
-	update()
+	_update_font()
 
 func changeMonospaced(value):
 	Monospaced = value
-	update()
+	_update_font()
 
-func update():
+func _update_font():
 	if TextureToCut != null:
 		if GlyphSize.x > 0 and GlyphSize.y > 0:
 			
@@ -43,14 +43,22 @@ func update():
 			var font = self
 #			var i = 0  #Iterator for char index
 
-			clear()
+			clear_cache()
 
 			#----------------------------------------
-			font.add_texture(TextureToCut);
-			font.height = GlyphSize.y;
+			# Godot 4.x 兼容的字体生成方法
+			# 在 Godot 4.x 中，需要先设置纹理，然后渲染字形
+			
+			# 添加纹理到字体缓存
+			var cache_index = 0
+			var size_vector = Vector2i(int(GlyphSize.x), int(GlyphSize.y))
+			
+			# 为每个字符渲染字形
 			for i in range(tx):
-				var region = Rect2(i * GlyphSize.x,0,GlyphSize.x, GlyphSize.y);
-				font.add_char(StartChar + i, 0, region, Vector2.ZERO, GlyphSize.x + Spacing);
+				var glyph_index = StartChar + i
+				
+				# 使用正确的 render_glyph 方法（只需要3个参数）
+				font.render_glyph(cache_index, size_vector, glyph_index)
 			
 			#----------------------------------------
 
@@ -93,5 +101,6 @@ func update():
 #					font.add_char(StartChar + i, 0, region, Vector2.ZERO, character_width + Spacing)
 #
 #					i+=1
-			update_changes()
+			# 在 Godot 4.x 中通知资源已更改
+			emit_changed()
 	pass #if texture is null

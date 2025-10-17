@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/klonter_fw_05.ogg-268f30ed329d9a74b38addcd04691860.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4q15ajbxibpe"
+path="res://.godot/imported/klonter_fw_05.ogg-268f30ed329d9a74b38addcd04691860.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/npc/klonter/klonter_fw_05.ogg"
-dest_files=[ "res://.import/klonter_fw_05.ogg-268f30ed329d9a74b38addcd04691860.oggstr" ]
+dest_files=["res://.godot/imported/klonter_fw_05.ogg-268f30ed329d9a74b38addcd04691860.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

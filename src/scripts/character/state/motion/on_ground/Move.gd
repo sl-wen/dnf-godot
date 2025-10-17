@@ -1,9 +1,9 @@
 extends "on_ground.gd"
 
 #Y方向移动速度
-export(float) var max_yspeed:int = 180
-export(float) var max_walk_speed = 150
-export(float) var max_run_speed = 300
+@export var max_yspeed: float = 180
+@export var max_walk_speed: float = 150
+@export var max_run_speed: float = 300
 
 var is_run:bool = false;
 
@@ -22,7 +22,7 @@ func enter():
 
 
 func handle_input(event):
-	return .handle_input(event)
+	return super.handle_input(event)
 
 
 func update(_delta):
@@ -53,7 +53,12 @@ func update(_delta):
 func move(speed, direction):
 	velocity.x = direction.normalized().x * speed
 	velocity.y = direction.normalized().y * max_yspeed;
-	owner.move_and_slide(velocity, Vector2(), 5, 2)
-	if owner.get_slide_count() == 0:
+	owner.velocity = velocity
+	owner.up_direction = Vector2()
+	owner.floor_stop_on_slope = true
+	owner.max_slides = 2
+	owner.move_and_slide()
+	owner.velocity
+	if owner.get_slide_collision_count() == 0:
 		return
 	return owner.get_slide_collision(0)
