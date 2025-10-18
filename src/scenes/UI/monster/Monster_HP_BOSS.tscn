@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/DaysOne-Regular.ttf" id="2"]
+[ext_resource type="Texture2D" path="res://assets/images/monster_hp/boss_bg.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/images/common_etc/monster_type/0.png" id="4"]
+[ext_resource type="FontFile" path="res://assets/fonts/DroidSansChinese.ttf" id="5"]
+
+[sub_resource type="FontFile" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource("5")
+
+[sub_resource type="FontFile" id=2]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource("2")
+
+[node name="Monster_HP_BOSS" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -568.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="NinePatchRect" parent="."]
+visible = false
+offset_left = 2.0
+offset_right = 576.0
+offset_bottom = 36.0
+texture = ExtResource("3")
+patch_margin_left = 36
+patch_margin_right = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="type" type="TextureRect" parent="."]
+offset_left = 39.0882
+offset_top = 8.36452
+offset_right = 71.0882
+offset_bottom = 23.3645
+custom_minimum_size = Vector2( 32, 15 )
+texture = ExtResource("4")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nameLabel" type="Label" parent="."]
+offset_left = 73.3371
+offset_top = 7.51073
+offset_right = 151.337
+offset_bottom = 24.5107
+theme_override_fonts/font = SubResource("1")
+text = "Lv2 哥布林"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp_double" type="Label" parent="."]
+offset_left = 455.5
+offset_top = 1.125
+offset_right = 570.5
+offset_bottom = 32.125
+theme_override_fonts/font = SubResource("2")
+text = "x2"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/48.png" id="1"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/44.png" id="2"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/47.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/49.png" id="4"]
+[ext_resource type="FontFile" path="res://assets/fonts/DroidSansChinese.ttf" id="5"]
+[ext_resource type="Texture2D" path="res://assets/images/face/npc/popup/shylock.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/46.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/45.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/41.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/42.png" id="10"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/popup/43.png" id="11"]
+
+[sub_resource type="FontFile" id=1]
+size = 12
+use_filter = true
+font_data = ExtResource("5")
+
+[node name="Menu_Shylock" type="Popup"]
+visible = true
+offset_right = 100.0
+offset_bottom = 84.0
+
+[node name="top" type="ColorRect" parent="."]
+offset_right = 7.62939e-06
+offset_bottom = -84.0
+custom_minimum_size = Vector2( 100, 21 )
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="faceIcon" type="Sprite2D" parent="top"]
+position = Vector2( 10.5, 10.5 )
+texture = ExtResource("6")
+
+[node name="nameLabel" type="Label" parent="top"]
+offset_left = 20.0
+offset_top = 2.0
+offset_right = 99.0
+offset_bottom = 19.0
+theme_override_fonts/font = SubResource("1")
+text = "夏洛克·戈林德"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="talkBtn" type="TextureButton" parent="."]
+offset_top = 21.0
+offset_right = 100.0
+offset_bottom = 42.0
+custom_minimum_size = Vector2( 100, 21 )
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("4")
+texture_hover = ExtResource("1")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="shopBtn" type="TextureButton" parent="."]
+offset_top = 42.0
+offset_right = 100.0
+offset_bottom = 63.0
+custom_minimum_size = Vector2( 100, 21 )
+texture_normal = ExtResource("2")
+texture_pressed = ExtResource("7")
+texture_hover = ExtResource("8")
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="taskBtn" type="TextureButton" parent="."]
+offset_top = 63.0
+offset_right = 100.0
+offset_bottom = 84.0
+custom_minimum_size = Vector2( 100, 21 )
+texture_normal = ExtResource("9")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("10")
+__meta__ = {
+"_edit_use_anchors_": false
+}
