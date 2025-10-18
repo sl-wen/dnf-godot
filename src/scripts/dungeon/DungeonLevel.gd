@@ -26,7 +26,7 @@ func setPlayer(_p,isinit:bool=true):
 			return
 		print("[DungeonLevel] Found bornStage node:", current, " calling addPlayer...")
 		current.addPlayer(player,Vector2.ZERO,true);
-		current.change_door_state(false);
+		# 门状态由stage的怪物系统控制，不在这里强制开启
 		print("[DungeonLevel] Player added to stage successfully.")
 	else:
 		current = getStage();

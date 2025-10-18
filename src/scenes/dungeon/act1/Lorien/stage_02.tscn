@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" path="res://assets/images/map/bg/01mid1.png" id="18"]
 [ext_resource type="Texture2D" path="res://assets/images/map/bg/01far1.png" id="19"]
 [ext_resource type="Script" path="res://src/scripts/com/DoorArea.gd" id="20"]
+[ext_resource type="PackedScene" path="res://src/scenes/monster/goblin/Goblin.tscn" id="21"]
 
 [sub_resource type="TileSet" id=1]
 0/name = "01tile03.png 0"
@@ -156,6 +157,17 @@ flip_h = true
 [node name="stage" type="Node2D" parent="."]
 
 [node name="objs" type="Node2D" parent="stage"]
+
+[node name="monsters" type="Node2D" parent="stage"]
+
+[node name="Goblin" parent="stage/monsters" instance=ExtResource("21")]
+position = Vector2( 600, 400 )
+
+[node name="Goblin2" parent="stage/monsters" instance=ExtResource("21")]
+position = Vector2( 300, 350 )
+
+[node name="Goblin3" parent="stage/monsters" instance=ExtResource("21")]
+position = Vector2( 900, 420 )
 
 [node name="01obj003" parent="stage/objs" instance=ExtResource("14")]
 position = Vector2( 768.314, 436.07 )

@@ -118,6 +118,17 @@ func createRole(n:String,job:String):
 		var temp:Array = [];
 		temp.resize(42);
 		skill.append(temp);
+	
+	# 为剑士添加初始技能到技能面板
+	match job:
+		GLOBALS_TYPE.SWORDMAN:
+			# 技能分类1：基础技能
+			skill[1][0] = {"id":1003,"lv":1,"show_lv":1};  # 上挑
+			skill[1][1] = {"id":1004,"lv":1,"show_lv":1};  # 强制 - 上挑
+			# 技能分类3：鬼剑士技能
+			skill[3][0] = {"id":1018,"lv":1,"show_lv":1};  # 鬼斩
+			skill[3][1] = {"id":1019,"lv":1,"show_lv":1};  # 强制 - 鬼斩
+	
 	data["skill"] = skill;
 	#初始化技能快捷栏
 	var sklShort:Array = [];
@@ -126,6 +137,8 @@ func createRole(n:String,job:String):
 		GLOBALS_TYPE.SWORDMAN:
 			sklShort[6] = {"id":1003,"lv":1};
 			sklShort[7] = {"id":1018,"lv":1}
+			sklShort[8] = {"id":1004,"lv":1};
+			sklShort[9] = {"id":1019,"lv":1}
 		GLOBALS_TYPE.FIGHTER:
 			pass
 		GLOBALS_TYPE.GUNNER:

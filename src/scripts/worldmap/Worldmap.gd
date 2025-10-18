@@ -11,6 +11,14 @@ func _ready():
 
 #进入地下城
 func _on_enterBtn_pressed():
+	print("[Worldmap] 进入按钮被点击")
+	print("[Worldmap] 当前选择的地下城: ", GlobalManager.select_dungeon)
+	print("[Worldmap] 当前选择的地下城场景: ", GlobalManager.select_dungeon_scene)
+	
+	if GlobalManager.select_dungeon_scene == null:
+		print("[Worldmap] 错误：没有选择地下城场景！")
+		return
+		
 	GlobalManager.main.enterDungeon1();
 	queue_free();
 

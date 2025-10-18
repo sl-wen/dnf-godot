@@ -21,6 +21,9 @@ func _ready():
 
 #聚焦当前按钮
 func _on_normalBtn_pressed():
+	print("[Worldmap_Button] 按钮被点击: ", name)
+	print("[Worldmap_Button] 地下城场景: ", dungeon)
+	
 	normalbg.visible = false;
 	normalbtn.visible = false;
 	selectBtn.visible = true;
@@ -29,6 +32,10 @@ func _on_normalBtn_pressed():
 	index = 0;
 	GlobalManager.select_dungeon = name;
 	GlobalManager.select_dungeon_scene = dungeon;
+	
+	print("[Worldmap_Button] 设置GlobalManager.select_dungeon = ", GlobalManager.select_dungeon)
+	print("[Worldmap_Button] 设置GlobalManager.select_dungeon_scene = ", GlobalManager.select_dungeon_scene)
+	
 	GlobalManager.trigger_change_dungeon();
 
 #鼠标移入

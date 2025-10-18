@@ -1,6 +1,10 @@
 extends "res://src/scripts/character/Old_Character.gd"
 #class_name Swordman
 
+# 当前要施放的技能信息
+var current_skill_id: int = 0
+var current_skill_level: int = 0
+
 #var body_resource = preload("res://assets/images/character/swordman/body/sm_body0000.png");
 var weapon_resource = preload("res://assets/images/character/swordman/kanata/katana0001.png");
 var attack1_sound = preload("res://assets/sounds/swordman/sm_atk_01.ogg");

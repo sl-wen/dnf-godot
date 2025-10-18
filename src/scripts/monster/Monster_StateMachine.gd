@@ -20,14 +20,13 @@ func _ready():
 
 
 func _change_state(state_name):
-	pass
-#	if not _active:
-#		return
-#	if state_name in ["damage", "jump", "attack"]:
-#		states_stack.push_front(states_map[state_name])
-#	if state_name == "jump" and current_state == move:
-#		jump.initialize(move.speed, move.velocity)
-#	._change_state(state_name)
+	if not _active:
+		return
+	if state_name in ["damage", "jump", "attack"]:
+		states_stack.push_front(states_map[state_name])
+	if state_name == "jump" and current_state == move:
+		jump.initialize(move.speed, move.velocity)
+	super._change_state(state_name)
 
 
 #func _unhandled_input(event):

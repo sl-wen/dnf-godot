@@ -58,7 +58,7 @@ tracks/3/keys = {
 "method": "attack_sound"
 }, {
 "args": [  ],
-"method": "attack_can_combo"
+"method": "enable_combo"
 } ]
 }
 tracks/4/type = "value"
@@ -152,7 +152,7 @@ tracks/3/keys = {
 "method": "attack_sound"
 }, {
 "args": [  ],
-"method": "attack_can_combo"
+"method": "enable_combo"
 } ]
 }
 tracks/4/type = "value"

@@ -175,6 +175,15 @@ height = 29.1381
 [sub_resource type="CapsuleShape2D" id=9]
 height = 10.4948
 
+[sub_resource type="CircleShape2D" id=10]
+radius = 150.0
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 60.0
+
+[sub_resource type="RectangleShape2D" id=12]
+size = Vector2(80, 40)
+
 [node name="Goblin" instance=ExtResource("1")]
 script = ExtResource("4")
 
@@ -207,6 +216,16 @@ position = Vector2( 0, 26.278 )
 
 [node name="CollisionShape2D" parent="BodyPivot/Offset/HurtBox" index="0"]
 shape = SubResource("8")
+
+[node name="CollisionShape2D" parent="BodyPivot/Offset/SightRange" index="0"]
+shape = SubResource("10")
+
+[node name="CollisionShape2D" parent="BodyPivot/Offset/AttackRange" index="0"]
+shape = SubResource("11")
+
+[node name="CollisionShape2D" parent="BodyPivot/Offset/Hitbox" index="0"]
+position = Vector2(40, 0)
+shape = SubResource("12")
 
 [node name="CollisionShape2D" parent="." index="6"]
 position = Vector2( 0, -8.40897 )

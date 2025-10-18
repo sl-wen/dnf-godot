@@ -175,6 +175,14 @@ func openWorldmap():
 #进入地下城1-加载loading
 func enterDungeon1():
 	print("[Main] enterDungeon1()")
+	
+	# 清理世界地图界面
+	var ui_children = ui.get_children()
+	for child in ui_children:
+		if child.name == "Worldmap" or child.get_script() != null and child.get_script().resource_path.ends_with("Worldmap.gd"):
+			print("[Main] Removing worldmap from UI layer")
+			child.queue_free()
+	
 	loading.enter_dungeon();
 #loading显示一半开始加载场景
 func enterDungeon2():

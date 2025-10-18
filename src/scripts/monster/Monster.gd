@@ -4,9 +4,19 @@ extends CharacterBody2D
 
 @onready var body:Sprite2D = $BodyPivot/Offset/Body;
 @onready var shadow:Sprite2D = $Shadow;
+@onready var state_machine = $StateMachine;
+@onready var sight_range = $BodyPivot/Offset/SightRange;
+@onready var attack_range = $BodyPivot/Offset/AttackRange;
+@onready var hitbox = $BodyPivot/Offset/Hitbox;
+
 var knockback = Vector2.ZERO;
 #属性
 var status:MonsterStatus;
+
+# AI状态
+var player_in_sight: bool = false;
+var player_in_attack_range: bool = false;
+var target_player: CharacterBody2D = null;
 
 func _ready():
 	pass
@@ -50,3 +60,39 @@ func get_direction() -> bool:
 	else:
 		value = false;
 	return value;
+
+# 视野检测回调
+func _on_sight_range_body_entered(body):
+	if body != null and body.name == "Character":
+		player_in_sight = true;
+		target_player = body;
+		print("玩家进入视野范围");
+		# 如果当前是idle状态，切换到move状态追击玩家
+		if state_machine != null and state_machine.current_state != null and state_machine.current_state.name == "Idle":
+			state_machine._change_state("move");
+
+func _on_sight_range_body_exited(body):
+	if body != null and body.name == "Character":
+		player_in_sight = false;
+		target_player = null;
+		print("玩家离开视野范围");
+		# 如果当前是move状态，切换回idle状态
+		if state_machine != null and state_machine.current_state != null and state_machine.current_state.name == "Move":
+			state_machine._change_state("idle");
+
+# 攻击范围检测回调
+func _on_attack_range_body_entered(body):
+	if body != null and body.name == "Character":
+		player_in_attack_range = true;
+		print("玩家进入攻击范围");
+		# 切换到攻击状态
+		if state_machine != null and state_machine.current_state != null and state_machine.current_state.name == "Move":
+			state_machine._change_state("attack");
+
+func _on_attack_range_body_exited(body):
+	if body != null and body.name == "Character":
+		player_in_attack_range = false;
+		print("玩家离开攻击范围");
+		# 如果玩家还在视野内，切换到move状态继续追击
+		if player_in_sight and state_machine != null and state_machine.current_state != null and state_machine.current_state.name == "Attack":
+			state_machine._change_state("move");

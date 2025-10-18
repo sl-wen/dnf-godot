@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Texture2D" path="res://assets/images/character/swordman/body/sm_body0000.png" id="1"]
 [ext_resource type="Texture2D" path="res://assets/images/character/swordman/kanata/katana0001.png" id="2"]
@@ -10,7 +10,8 @@
 [ext_resource type="Script" path="res://src/scripts/character/state/motion/on_ground/Idle.gd" id="8"]
 [ext_resource type="Script" path="res://src/scripts/character/state/combat/Attack.gd" id="9"]
 [ext_resource type="Script" path="res://src/scripts/character/state/combat/Damage.gd" id="10"]
-[ext_resource type="PackedScene" path="res://src/scenes/Areabox/Hitbox.tscn" id="11"]
+[ext_resource type="Script" path="res://src/scripts/character/state/combat/Skill.gd" id="11"]
+[ext_resource type="PackedScene" path="res://src/scenes/Areabox/Hitbox.tscn" id="12"]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource("3")
@@ -46,6 +47,9 @@ script = ExtResource("10")
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("9")
 
+[node name="Skill" type="Node" parent="StateMachine"]
+script = ExtResource("11")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -78,7 +82,7 @@ frame = 176
 [node name="hitPivot" type="Marker2D" parent="BodyPivot/Offset"]
 position = Vector2( 0, 22 )
 
-[node name="Hitbox" parent="BodyPivot/Offset/hitPivot" instance=ExtResource("11")]
+[node name="Hitbox" parent="BodyPivot/Offset/hitPivot" instance=ExtResource("12")]
 position = Vector2( 47.985, 0 )
 collision_layer = 0
 collision_mask = 16

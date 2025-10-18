@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/scripts/monster/monster_state/combat/Monster_Damage.gd" id="8"]
 [ext_resource type="Script" path="res://src/scripts/monster/Monster_StateMachine.gd" id="9"]
 [ext_resource type="Script" path="res://src/scripts/monster/monster_state/in_air/Monster_Jump.gd" id="10"]
+[ext_resource type="Script" path="res://src/scripts/monster/MonsterHitbox.gd" id="11"]
 
 [node name="Monster" type="CharacterBody2D"]
 collision_layer = 4
@@ -55,8 +56,31 @@ script = ExtResource("3")
 collision_layer = 16
 collision_mask = 0
 
+[node name="SightRange" type="Area2D" parent="BodyPivot/Offset"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/Offset/SightRange"]
+
+[node name="AttackRange" type="Area2D" parent="BodyPivot/Offset"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/Offset/AttackRange"]
+
+[node name="Hitbox" type="Area2D" parent="BodyPivot/Offset"]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyPivot/Offset/Hitbox"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [connection signal="area_entered" from="BodyPivot/Offset/HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="body_entered" from="BodyPivot/Offset/SightRange" to="." method="_on_sight_range_body_entered"]
+[connection signal="body_exited" from="BodyPivot/Offset/SightRange" to="." method="_on_sight_range_body_exited"]
+[connection signal="body_entered" from="BodyPivot/Offset/AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="BodyPivot/Offset/AttackRange" to="." method="_on_attack_range_body_exited"]
 
 [editable path="BodyPivot/Offset/HurtBox"]
