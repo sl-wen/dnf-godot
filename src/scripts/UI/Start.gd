@@ -14,6 +14,8 @@ func _ready() -> void:
 	create.visible = false;
 #	scrollContainer.get_v_scrollbar().step = scrollContainer.rect_size.y / 2;
 	get_role_list();
+
+
 	
 
 #开始游戏

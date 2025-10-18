@@ -405,8 +405,6 @@ one_shot = true
 autostart = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1")
-autoplay = true
 bus = "BGM"
 
 [node name="CharacterCreate" parent="." instance=ExtResource("17")]

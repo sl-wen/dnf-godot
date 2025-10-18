@@ -52,8 +52,7 @@ var input_data:Dictionary = {
 var state = STATE.IDLE;
 #方向
 var direction = DIRECTION.RIGHT;
-#移动方向
-var velocity:Vector2 = Vector2.ZERO;
+#移动方向 (使用内置的 velocity 属性，不需要重新定义)
 #重力
 var gravity:int = 35;
 #Y方向移动速度

@@ -46,7 +46,8 @@ func update(_delta):
 		var collision_info = move(speed, input_direction)
 		if not collision_info:
 			return
-		if speed == max_run_speed and collision_info.collider.is_in_group("environment"):
+		var collider = collision_info.get_collider()
+		if speed == max_run_speed and collider and collider.is_in_group("environment"):
 			return null
 
 
@@ -54,7 +55,8 @@ func move(speed, direction):
 	velocity.x = direction.normalized().x * speed
 	velocity.y = direction.normalized().y * max_yspeed;
 	owner.velocity = velocity
-	owner.up_direction = Vector2()
+	owner.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
+	owner.up_direction = Vector2.UP
 	owner.floor_stop_on_slope = true
 	owner.max_slides = 2
 	owner.move_and_slide()

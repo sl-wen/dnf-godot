@@ -1,4 +1,4 @@
-extends Node
+extends RefCounted
 class_name RoleData
 
 #生命值变更
@@ -117,6 +117,16 @@ func _init():
 	pass
 
 func init_data():
+	# 设置默认职业
+	if job == null or job.is_empty():
+		job = GLOBALS_TYPE.SWORDMAN;
+	if job_base == null or job_base.is_empty():
+		job_base = GLOBALS_TYPE.SWORDMAN;
+	if role_name == null or role_name.is_empty():
+		role_name = "剑士";
+	
+	print("RoleData初始化完成，职业: ", job, ", 基础职业: ", job_base, ", 角色名: ", role_name);
+	
 	lv = 10;
 	sp = 100;
 	max_expe = ConfigManager.exptableConfig.get_exp(lv);

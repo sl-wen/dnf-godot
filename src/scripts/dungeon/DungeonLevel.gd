@@ -12,12 +12,22 @@ func _ready() -> void:
 
 ##设置玩家
 func setPlayer(_p,isinit:bool=true):
+	print("[DungeonLevel] setPlayer() called. bornStage:", bornStage, " isinit:", isinit)
 	player = _p;
 	var current;
 	if isinit:
+		if bornStage == "":
+			push_error("[DungeonLevel] bornStage is empty! Cannot find spawn stage.")
+			return
+		print("[DungeonLevel] Looking for bornStage node:", bornStage)
 		current = get_node(bornStage);
+		if current == null:
+			push_error("[DungeonLevel] Cannot find bornStage node: " + bornStage)
+			return
+		print("[DungeonLevel] Found bornStage node:", current, " calling addPlayer...")
 		current.addPlayer(player,Vector2.ZERO,true);
 		current.change_door_state(false);
+		print("[DungeonLevel] Player added to stage successfully.")
 	else:
 		current = getStage();
 		var p_pos:Vector2 = current.get_door_position();

@@ -1,15 +1,15 @@
-[gd_scene load_steps=31 format=3 uid="uid://stage01_elvengard"]
+[gd_scene load_steps=33 format=4 uid="uid://uoyr758urqcc"]
 
-[ext_resource type="Texture2D" path="res://assets/images/map/bg/01mid1.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b551mpq58lfxw" path="res://assets/images/map/bg/01mid1.png" id="1"]
 [ext_resource type="PackedScene" path="res://src/scenes/com/DoorArea.tscn" id="2"]
-[ext_resource type="Texture2D" path="res://assets/images/map/obj/blacksmith02.png" id="3"]
-[ext_resource type="Texture2D" path="res://assets/images/map/bg/01far1.png" id="4"]
-[ext_resource type="Texture2D" path="res://assets/images/map/tiles/01tile03.png" id="5"]
-[ext_resource type="Script" path="res://src/scripts/town/BaseStage.gd" id="6"]
-[ext_resource type="Texture2D" path="res://assets/images/map/obj/blacksmith01.png" id="7"]
-[ext_resource type="Texture2D" path="res://assets/images/map/tiles/elvengardobject05.png" id="8"]
-[ext_resource type="Texture2D" path="res://assets/images/map/sign/sign0.png" id="9"]
-[ext_resource type="Texture2D" path="res://assets/images/map/obj/blacksmith00.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://85exblbel0of" path="res://assets/images/map/obj/blacksmith02.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://i0hdl8s5q4yw" path="res://assets/images/map/bg/01far1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://t3nulnc5w84w" path="res://assets/images/map/tiles/01tile03.png" id="5"]
+[ext_resource type="Script" uid="uid://c8ciiojeeeyfh" path="res://src/scripts/town/BaseStage.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://bfb7ucv6pkyba" path="res://assets/images/map/obj/blacksmith01.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://470lowt2oq3q" path="res://assets/images/map/tiles/elvengardobject05.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://ckrvvk58iuka7" path="res://assets/images/map/sign/sign0.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dm8grck0ouqtp" path="res://assets/images/map/obj/blacksmith00.png" id="10"]
 [ext_resource type="PackedScene" path="res://src/component/obj/blacksmith.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://src/component/obj/elvenltw.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://src/component/flag/flag0.tscn" id="13"]
@@ -79,9 +79,9 @@ size = Vector2(37.6652, 169.494)
 
 [node name="Elvengard_map1" type="Node2D"]
 script = ExtResource("6")
-metadata/_edit_horizontal_guides_ = [377.519, 340.199]
 bgm = "forest_town"
 env = "amb_forest_01"
+metadata/_edit_horizontal_guides_ = [377.519, 340.199]
 
 [node name="environment" type="Node2D" parent="."]
 
@@ -107,15 +107,17 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 931, 379)
 
-[node name="GrassMap" type="TileMap" parent="environment"]
+[node name="GrassMap" type="TileMapLayer" parent="environment"]
+use_parent_material = true
 position = Vector2(0, 101)
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_1")
-layer_0/tile_data = PackedInt32Array(65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0)
 
-[node name="RoadMap" type="TileMap" parent="environment"]
+[node name="RoadMap" type="TileMapLayer" parent="environment"]
+use_parent_material = true
 position = Vector2(0, -7)
+tile_map_data = PackedByteArray("AAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_2")
-layer_0/tile_data = PackedInt32Array(327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0)
 
 [node name="blacksmith" parent="environment" instance=ExtResource("11")]
 position = Vector2(377.881, 309.362)
@@ -192,12 +194,16 @@ shape = SubResource("RectangleShape2D_4")
 position = Vector2(0.5, -47.5)
 
 [node name="Linus" parent="." instance=ExtResource("15")]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 450.714
 offset_top = 308.136
 offset_right = 515.714
 offset_bottom = 325.136
 
 [node name="Danjin" parent="." instance=ExtResource("19")]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 1354.73
 offset_top = 325.689
 offset_right = 1419.73
@@ -223,7 +229,7 @@ position = Vector2(789.419, 323.612)
 metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collision/StaticBody2D"]
-polygon = PackedFloat32Array(-790.562, 53.7334, -70.7271, 53.7334, -44.5641, 16.2567, 43.1172, 16.2567, 63.6233, 54.4405, 779.215, 53.7334, 778.149, -323.461, -790.916, -323.461)
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="collision"]
 position = Vector2(788.419, 572.418)

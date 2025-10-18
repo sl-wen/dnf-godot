@@ -16,11 +16,14 @@ func change_town():
 	$AnimationPlayer.play("town_cutscene");
 	
 func completeAnimation():
+	print("[Loading] completeAnimation() called - hiding loading screen")
 	self.visible = false;
+	print("[Loading] Loading screen hidden. Player should now see dungeon.")
 
 #进入地下城
 func enter_dungeon():
 	self.visible = true;
+	print("[Loading] enter_dungeon() cutscene:", Utils.get_dungeon_cutscene(), " title:", Utils.get_dungeon_title())
 	var texture = load(Utils.get_dungeon_cutscene());
 	$cutscene.texture = texture;
 	$dungeon_title.frames = load(Utils.get_dungeon_title());
@@ -29,6 +32,7 @@ func enter_dungeon():
 	
 #进入地下城的动画播放到一半的时候
 func dungeon_at_mid():
+	print("[Loading] dungeon_at_mid() -> GlobalManager.main.enterDungeon2()")
 	GlobalManager.main.enterDungeon2();
 	
 

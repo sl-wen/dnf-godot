@@ -7,6 +7,8 @@ extends "res://src/scripts/state_machine/state_machine.gd"
 @onready var attack = $Attack
 
 func _ready():
+	super._ready()
+	# Re-key states_map to lowercase names to match emitted state names
 	states_map = {
 		"idle": idle,
 		"move": move,
@@ -35,7 +37,8 @@ func _unhandled_input(event):
 			return
 		_change_state("attack")
 		return
-	current_state.handle_input(event)
+	if current_state:
+		current_state.handle_input(event)
 
 func attack_can_combo():
 	current_state.can_combo = true;

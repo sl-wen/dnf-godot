@@ -30,6 +30,10 @@ class_name Main
 
 #玩家
 var player:CharacterBody2D;
+
+# 获取玩家对象的公共方法
+func get_player() -> CharacterBody2D:
+	return player
 #当前地图
 var current_level;
 
@@ -40,16 +44,36 @@ func _ready() -> void:
 	_err = InputManager.connect("open_skill", Callable(self, "_on_open_skill"));
 	_err = InputManager.connect("ui_cancel", Callable(self, "on_ui_cancel"));
 	
+	# 确保数据管理器已初始化
+	print("初始化数据管理器...")
+	DataManager.init_data();
+	print("数据管理器初始化完成")
+	
 	init_player();
 	init_map();
 
 #初始化玩家	
 func init_player():
+	print("开始初始化玩家，职业: ", DataManager.roleData.job)
+	print("GLOBALS_TYPE.SWORDMAN: ", GLOBALS_TYPE.SWORDMAN)
+	print("GLOBALS_TYPE.FIGHTER: ", GLOBALS_TYPE.FIGHTER)
+	
 	match DataManager.roleData.job:
 		GLOBALS_TYPE.SWORDMAN:
+			print("匹配到剑士职业，加载 Swordman.tscn")
 			player = load("res://src/scenes/character/Swordman.tscn").instantiate();
 		GLOBALS_TYPE.FIGHTER:
+			print("匹配到格斗家职业，加载 Fighter.tscn")
 			player = load("res://src/scenes/character/Fighter.tscn").instantiate();
+		_:
+			print("未匹配到任何职业，使用默认剑士")
+			player = load("res://src/scenes/character/Swordman.tscn").instantiate();
+	
+	# 确保 GlobalManager 能访问到 player
+	if player:
+		print("玩家角色已创建: ", DataManager.roleData.job)
+	else:
+		print("错误：玩家角色创建失败")
 
 #初始化地图
 func init_map():
@@ -66,7 +90,7 @@ func change_level():
 	if not children.is_empty():
 		children[0].queue_free();
 	
-	await get_tree().idle_frame
+	await get_tree().process_frame
 	
 	var file_addr:String;
 	match GlobalManager.state.target:
@@ -94,11 +118,20 @@ func changeBGM(value:String):
 	if value == GlobalManager.current_bgm_name:
 		return;
 	bgm.stop();
+	# 清理之前的音频流资源
+	if bgm.stream != null:
+		bgm.stream = null
+	
+	if value == "":
+		GlobalManager.current_bgm_name = value;
+		return;
+		
 	var audio_file = "res://assets/music/" + value + ".ogg";
 	var bgmusic = load(audio_file);
-	bgmusic.loop = true; 
-	bgm.stream = bgmusic;
-	bgm.play();
+	if bgmusic != null:
+		bgmusic.loop = true; 
+		bgm.stream = bgmusic;
+		bgm.play();
 	GlobalManager.current_bgm_name = value;
 	
 
@@ -108,13 +141,20 @@ func changeENV(value:String):
 		return;
 	
 	env.stop();
+	# 清理之前的音频流资源
+	if env.stream != null:
+		env.stream = null
+		
 	if value == "":
+		GlobalManager.current_env_name = value;
 		return;
+		
 	var audio_file = "res://assets/sounds/amb/" + value + ".ogg";
 	var envmusic = load(audio_file);
-	envmusic.loop = true;
-	env.stream = envmusic;
-	env.play();
+	if envmusic != null:
+		envmusic.loop = true;
+		env.stream = envmusic;
+		env.play();
 	GlobalManager.current_env_name = value;
 
 #获得当前地图的类型
@@ -127,24 +167,38 @@ func openWorldmap():
 		"Lorien":
 			var w = load("res://src/scenes/worldmap/Lorien.tscn").instantiate();
 			ui.add_child(w);
+			print("[Main] openWorldmap() -> Lorien UI added")
 			
 	current_level.reset_player_position();
 			
 			
 #进入地下城1-加载loading
 func enterDungeon1():
+	print("[Main] enterDungeon1()")
 	loading.enter_dungeon();
 #loading显示一半开始加载场景
 func enterDungeon2():
+	print("[Main] enterDungeon2() select_dungeon:", GlobalManager.select_dungeon, " scene:", GlobalManager.select_dungeon_scene)
 	player.get_parent().remove_child(player);
 	var children = levels.get_children();
 	if not children.is_empty():
 		children[0].queue_free();
-	
+		
 	GlobalManager.map_type = "dungeon";
+	if GlobalManager.select_dungeon_scene == null:
+		push_warning("[Main] select_dungeon_scene is NULL, did you select a dungeon?")
+		return
+	
+	print("[Main] Instantiating dungeon scene...")
 	current_level = GlobalManager.select_dungeon_scene.instantiate()
+	print("[Main] Scene instantiated:", current_level, " type:", current_level.get_script())
+	
+	print("[Main] Adding scene to levels...")
 	levels.add_child(current_level);
+	print("[Main] Scene added to levels. Calling setPlayer...")
+	
 	current_level.setPlayer(player);
+	print("[Main] setPlayer called. Player should now be in dungeon.");
 
 #打开状态栏
 func _on_open_status():

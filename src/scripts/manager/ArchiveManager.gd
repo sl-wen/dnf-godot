@@ -70,11 +70,18 @@ func get_role_list() -> Array:
 		var path:String = SAVE_DIR + name_list[i]
 		if not FileAccess.file_exists(path):
 			continue
+		# 添加错误处理来跳过损坏的存档文件
 		var save_game := FileAccess.open_encrypted_with_pass(path, FileAccess.READ, "DNFyU9w18")
 		if save_game != null:
+			# 尝试读取文件数据，如果失败则跳过该文件
 			var file_data = save_game.get_var()
-			list.append(file_data)
+			if file_data != null:
+				list.append(file_data)
+			else:
+				print("警告：存档文件损坏，跳过文件: ", path)
 			save_game.close()
+		else:
+			print("警告：无法打开存档文件，跳过文件: ", path)
 	return list
 
 #检查名字

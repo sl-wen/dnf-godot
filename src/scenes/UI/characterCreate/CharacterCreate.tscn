@@ -32,28 +32,24 @@
 [ext_resource type="Texture2D" uid="uid://bwwkponmwbt71" path="res://assets/images/charactercreate/41.png" id="31"]
 [ext_resource type="Texture2D" uid="uid://bs2nevn6e0igb" path="res://assets/images/charactercreate/43.png" id="32"]
 [ext_resource type="Script" uid="uid://bsne8xjumj6t3" path="res://src/scripts/UI/characterCreate/CharacterCreate.gd" id="33"]
-[ext_resource type="AudioStream" uid="uid://dck4lqogypdl4" path="res://assets/sounds/ui/click2.ogg" id="35"]
+[ext_resource type="AudioStream" path="res://assets/sounds/ui/click2.ogg" id="35"]
 [ext_resource type="FontFile" uid="uid://bm3kfsy1e828x" path="res://assets/fonts/DroidSansChinese.ttf" id="36"]
 
 [sub_resource type="StyleBoxTexture" id="1"]
 texture = ExtResource("2")
 region_rect = Rect2(0, 0, 800, 600)
 
+[sub_resource type="ButtonGroup" id="3"]
+
 [sub_resource type="StyleBoxTexture" id="2"]
 texture = ExtResource("23")
 region_rect = Rect2(0, 0, 104, 111)
 
-[sub_resource type="ButtonGroup" id="3"]
-
 [sub_resource type="FontFile" id="4"]
 fallbacks = Array[Font]([ExtResource("36")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-fallbacks = Array[Font]([ExtResource("36")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -219,9 +215,9 @@ theme_override_styles/panel = SubResource("2")
 [node name="nameText" type="TextEdit" parent="createWindow"]
 layout_mode = 0
 offset_left = 319.0
-offset_top = 398.0
+offset_top = 390.0
 offset_right = 480.0
-offset_bottom = 419.0
+offset_bottom = 411.0
 theme_override_fonts/font = SubResource("4")
 
 [node name="okBtn" parent="createWindow" instance=ExtResource("24")]
