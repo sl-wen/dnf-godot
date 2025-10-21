@@ -9,7 +9,7 @@ func _ready():
 	
 	# 连接到父场景的怪物管理器
 	var parent_stage = get_parent().get_parent()
-	if parent_stage.has_method("register_monster"):
+	if parent_stage != null and parent_stage.has_method("register_monster"):
 		parent_stage.register_monster(self)
 
 #受到伤害
@@ -35,7 +35,7 @@ func die():
 	
 	# 通知父场景怪物死亡
 	var parent_stage = get_parent().get_parent()
-	if parent_stage.has_method("on_monster_died"):
+	if parent_stage != null and parent_stage.has_method("on_monster_died"):
 		parent_stage.on_monster_died(self)
 	
 	# 延迟移除怪物

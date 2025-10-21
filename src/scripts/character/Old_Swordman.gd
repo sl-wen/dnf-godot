@@ -15,7 +15,7 @@ func _ready() -> void:
 #	body.texture = body_resource;
 #	shadow.texture = body_resource;
 	weapon.texture = weapon_resource;
-	mainPlayer.playback_speed = 1
+	mainPlayer.speed_scale = 1.0
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_left") and direction == DIRECTION.LEFT:

@@ -75,4 +75,5 @@ func _on_closeBtn_pressed():
 
 
 func _on_Status_visibility_changed():
-	$windowSound.play();
+	if is_inside_tree() and $windowSound:
+		$windowSound.play();
